@@ -8,7 +8,7 @@ public class Ex6_char {
 		 */
 		char ch1 = '\t'; //Tab키 만큼 공백
 		char ch2 = '\n'; //엔터
-		char ch3 = '\r'; //,커서를 앞으로 이동
+		char ch3 = '\r'; //커서를 앞으로 이동
 		char ch4 = '\"'; //"문자
 		char ch5 = '\''; //'문자
 		char ch6 = '\\'; //\문자

@@ -23,13 +23,15 @@ public class Ex15_For6_GCD {
 		/* 변수의 사용 범위
 		 * i는 반복문 밖에서 선언됐기 때문에 반복문 이후에도 사용 가능
 		 * j는 반복문 안에서 선언됐기 때문에 반복문 에서만 사용 가능*/
-		int i;
+		
 		int num1 = 12;
 		int num2 = 18;
-		for(i=0; i<=num1; i++) {
+		int gcd=1;
+		for(int i=1; i<=num1; i++) {
 			if(num1 % i == 0 && num2 % i == 0) {
-				System.out.println(i);
+				gcd=i;
 			}
 	}
+		System.out.println(num1 + "과" + num2 + "의 최대공약수는 : " + gcd);
 
 }}

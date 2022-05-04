@@ -4,6 +4,7 @@ public class Ex4_Method4_Swap {
 
 	public static void main(String[] args) {
 		/* 매개변수가 기본 타입 변수인 경우, 메소드 안에서 열심히 작업해도 원본은 안바뀐다.
+		 * 매개변수가 참조 타입 변수인 경우, 메소드 안에서 원본이 값이 바뀔수 있다.
 		 * */
 		Test num1 = new Test(10), num2 = new Test(20);
 		System.out.println("main 메소드 - 전 num1 : " + num1 + ", num2 : " + num2);

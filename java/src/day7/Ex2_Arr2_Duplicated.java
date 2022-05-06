@@ -22,5 +22,5 @@ public class Ex2_Arr2_Duplicated {
 				System.out.println("배열에 " + num + "가 없습니다.");
 		}
 	}
-		return num;
+		//return num;
 }

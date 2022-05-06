@@ -18,5 +18,3 @@ public class Ex5_if2 {
 			
 		}
 	}
-
-}

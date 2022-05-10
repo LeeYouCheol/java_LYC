@@ -86,6 +86,7 @@ public class Ex6_Program_Student {
 						math = scan.nextInt();
 						//학생 정보를 수정하고 반복문을 종료
 						std[i].modify(name, kor, eng, math);
+						System.out.println("수정되었습니다.");
 						break;
 					}//등록된 학생 전체를 확인해서 일치하는 학생이 없으면 등록된 학생이 아닙니다라고 출력
 					if(i+1 == index) {
@@ -99,6 +100,7 @@ public class Ex6_Program_Student {
 				classNumber = scan.nextInt();
 				number = scan.nextInt();
 				//반복문을 이용하여 0번지부터 inex명의 학생을 비교
+				//삭제할 위치를 찾음
 				int delIndex = -1;
 				for(int i = 0; i <index; i++) {
 					//일치하는 학생정보가 있으면 delIndex로 기억, 반복문 종료
@@ -109,6 +111,7 @@ public class Ex6_Program_Student {
 				}
 				//delIndex가 0이상이면 => 일치하는 학생이 있으면
 				if(delIndex >= 0) {
+					//삭제하는 부분
 					//반복문을 이용하여 delIndex번지부터 index-2번지까지 다음번지에 있는 정보를 현재 번지에 저장
 					for(int i = delIndex; i < index-1; i++) {
 						std[i] = std[i+1];

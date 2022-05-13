@@ -19,9 +19,9 @@ public class Ex5_Test {
 		int engScore = 0;
 		int mathScore = 0;
 		//조건2
-		double korScore = 0;
-		double engScore = 0;
-		double mathScore =0;
+		double korScore2 = 0;
+		double engScore2 = 0;
+		double mathScore2 =0;
 		
 		/*2-2. 대학생의 학점을 출력하려고 한다.
 		 * 이 때 학점을 저장하는 변수를 선언하세요.

@@ -57,7 +57,7 @@ public class Ex6_Arry_Lotto {
 				int k;
 				for(k=0; k<user.length; k++) {
 					if(user[k] == lotto[6]) {
-				break;
+						break;
 					}
 				}
 				if(k == user.length) {

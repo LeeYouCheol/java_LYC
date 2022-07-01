@@ -13,10 +13,12 @@
 		.fixed-con{ width: 1190px; margin: 0 auto;}
 		.mneu-con, .footer-con{ min-width: 1190px;}
 
-		.search-con{ height: 160px; background-color: red; position: relative;}
+		.search-con{
+			height: 160px; position: relative;
+		}
 		.box-search{
 			width: 586px; height: 56px; position: absolute;
-			left: 298px; top: 50%; margin-top: -28px;
+			left: 268px; top: 50%; margin-top: -28px;
 		}
 		.box-search-in{
 			height: 100%; box-sizing: border-box; border: 2px solid #19ce60;
@@ -28,7 +30,7 @@
 			font-weight: bold;
 		}
 		.btn-submit{
-			width: 56px; height: 56px; box-sizing: border-box; position: absolute;
+			width: 56px; height: 55px; box-sizing: border-box; position: absolute;
 			background-color: #19ce60; border-radius: 0 2px 2px 0;
 			border: 0; outline: 0; cursor: pointer; top: 0; right: 0;
 		}
@@ -36,18 +38,200 @@
 			display: inline-block; width: 22px; height: 22px;
 			background-position: -420px 0;
 		}
+		.search-con .service-area{
+			position: absolute; top: 12px; right: 27px;
+		}
+		.search-con .link-set{
+			float: left; font-size: 11px; color: #404040; text-decoration: none;
+		}
+		.search-con .link-set:hover{
+			cursor: pointer;
+			text-decoration: underline;
+		}
+		/* 키보드 */
+		.search-con .btn-kbd{
+			position: absolute; top: 0; right: 84px; bottom: 0;
+			width: 36px; z-index: 400; text-decoration: none;
+		}
+		.search-con .ico-kbd{
+			position: absolute; top: 50%; left: 50%; display: inline-block;
+			width: 20px; height: 12px; background-position: -420px -402px;
+			vertical-align: top; margin: -6px 0 0 -10px;
+		}
+		.search-con .btn-kbd:hover .ico-kbd{
+			background-position: -206px -389px;
+		}
+
+		/* 자동완성 버튼*/
+		.search-con .btn-auto-down{
+			position: absolute; top: 0; bottom: 0; right: 64px; width: 22px;
+		}
+		.search-con .ico-auto{
+			width: 10px; height: 5px; display: inline-block; position: absolute;
+			top: 50%; left: 50%; margin: -2px 0 0 -5px; vertical-align: top;
+			background-position: -408px -100px;
+		}
+		.search-con .btn-auto-dwon.up .ico-auto{
+			background-position: -408px -93px;
+		}
+		/* 자동완성 박스*/
+		.search-con .box-auto-content{
+			margin: -1px; border: 1px solid #e4e7e8;
+			border-radius: 0 0 6px 6px; border-top: 0;
+			box-shadow: 0 2px 3px 0 rgba(0, 1, 3, 0.07);
+			background-color: #fff;
+			display: none;
+		}
+		.search-con .box-auto-footer{
+			height: 40px; box-sizing: border-box;border-top: 1px solid #f1f4f6;
+			border-radius: 0 0 6px 6px; background-color: #f9fafb;
+			line-height: 37px; font-size: 13px;
+		}
+		.search-con .box-auto-footer .box-left{
+			float: left; padding-left: 12px;
+		}
+		.search-con .box-auto-footer .box-right{
+			float: right; padding-right: 12px;
+		}
+		.search-con .box-auto-footer .item{
+			padding: 0 6px; color: gray; float: left;
+		}
+		.search-con .box-auto-footer .report{
+			color: #03c75a;
+		}
+		.search-con .box-auto-footer .item+.item::before{
+			width: 1px; height: 11px; float: left; margin-top: 14px; content: '';
+			background-color: #e2e2e2; margin-left: -6px;
+		}
 
 
+		.search-con .link-set::after{
+			display: inline-block; width: 26px; height: 26px;
+			background-position: -308px -345px; content: ''; vertical-align: top;
+			margin: -3px 0 0 3px;
+		}
+		.link-jrnaver{
+			float: left; text-decoration: none; cursor: pointer;
+			font-size: 12px; line-height: 16px;
+		}
+		.ico-jrnaver{
+			display: inline-block; width: 60px; height: 10px; vertical-align: top;
+			background-position: -262px -330px; margin: 3px; 
+		}
 
-		.menu-con{height: 52px; background-color: orange;}
+		.link-naver{
+			width: 222px; height: 52px; position: absolute; top: 50%;
+			background-position: 0 -158px; top: 50%; margin-top: -32px;
+			left: 21px;
+		}
+		.link-happybin{
+			float: left; margin-left: 6px; text-decoration: none; cursor: pointer;
+			font-size: 12px; line-height: 16px;
+		}
+		.ico-happybin{
+			display: inline-block; width: 34px; height: 11px; vertical-align: top;
+			background-position: -369px -299px; margin: 3px 3px 2px;
+		}
+		.link-jrnaver:hover .ico-jrnaver{
+			background-position: -200px -330px;
+		}
+		.link-happybin:hover .ico-happybin{
+			background-position: -380px -199px;
+		}
+	
+		/* 중간 메뉴*/
+		.menu-con{
+			height: 52px; position: relative; border-top: 1px solid #e4e8eb;
+			box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+	}
+		.menu-con .menu-inner{
+			position: relative; width: 1130px;
+			padding: 0 30px; margin: 0 auto;
+		}
+		.menu-con .menu-group{
+			overflow: hidden; position: relative; padding: 11px 270px 11px 0;
+		}
+		.menu-con .menu-list{
+			float: left; font-size: 15px; line-height: 30px; font-weight: 700;
+			color: #000; letter-spacing: -.3px; list-style: none; font-weight: bold;
+		}
+		.menu-con .menu-list .list-item{
+			float: left;
+		}
+		.menu-con .menu-list.type-fix .item{
+			color: #03c75a;
+		}
+		.menu-con .menu-list .item{
+			display: block; text-decoration: none;
+		}
+		.menu-con .menu-list .ico-mail{
+			display: inline-block; width: 21px; height: 21px;
+			background-position: -420px -73px; vertical-align: top;
+			margin: 3px 9px 0 0;
+		}
+		.menu-con .menu-list .list-item+.list-item{
+			margin-left: 12px;
+		}
+		.menu-con .menu-list .list-item{
+			float: left;
+		}
+		.menu-con .menu-list .shop{
+			padding: 5px 0;
+		}
+		.menu-con .menu-list .shop::before{
+			width: 24px; height: 20px; background-position: -154px -389px;
+			content: ''; display: block;
+		}
+		.menu-con .menu-list .shoplive{
+			padding: 5px 0;
+		}
+		.menu-con .menu-list .shoplive::before{
+			width: 54px; height: 20px; background-position: -202px -299px;
+			content: ''; display: block;
+		}
+		.menu-con .menu-list .ico-tv{
+			display: inline-block; width: 12px; height: 14px;
+			background-position: -444px -49px; vertical-align: top;
+			margin: 9px 2px 0 0;
+		}
+		.menu-con .menu-list+.menu-list{
+			margin-left: 12px;
+		}
+		.menu-con .list-item.type-empty{
+			letter-spacing: -1px;
+		}
+		.menu-con .menu-group .menu-inner .menu-list{
+			color: #000;
+		}
+
 		.content-con{height: 500px; background-color: blue;}
 		.footer-con{height: 424px; background-color: purple;}
 
-		.fixed-con{padding: 0 30px;}
+		/* 공용 */
+		.fixed-con{padding: 0 30px; box-sizing: border-box;}
 
-		.icon-search{
+		/* 공용 이미지1 */
+		.icon-search, .link-naver, .search-con .link-set::after, .ico-jrnaver,
+		.ico-happybin, .search-con .ico-kbd, .search-con .ico-auto,
+		.menu-con .menu-list .ico-mail, .menu-con .menu-list .shop::before,
+		.menu-con .menu-list .shoplive::before, .menu-con .menu-list .ico-tv{
 			background-image: url(https://s.pstatic.net/static/www/img/uit/sp_main_4f8ccb.png);
 			background-size: 457px 434px;
+		}
+		/* display 블락과 inline-block은 안해도된다. float을 이용하기때문에 자동으로 된다.*/
+		.search-con .sa-bar{
+			float: left; width: 1px; height: 10px; margin: 3px 7px;
+			background-color: #e4e8eb; font-style: normal;
+		}
+		.blind{
+			position: absolute; clip: rect(0 0 0 0);
+			width: 1px; height: 1px; margin: -1px; overflow: hidden;
+		}
+		.search-con .service-area::after{
+			clear: both; display: block; content: '';
+		}
+		.menu-con .menu-list::after{
+			content: ''; display: table; table-layout: fixed; clear: both;
 		}
 	</style>
 </head>
@@ -57,13 +241,112 @@
 			<div class="box-search-in">
 				<input type="text" class="input-search" name="query">
 			</div>
-			<div class="box-auto"></div>
+			<!--검색창 끝-->
+			<a href="javascropt:0;" class="btn-kbd">
+				<i class="ico-kbd"></i>
+			</a>
+			<div class="box-auto">
+				<a href="javascript:0;" class="btn-auto-down">
+					<i class="ico-auto"></i>
+				</a>
+				<div class="box-auto-content">
+					<div class="box-auto-footer">
+						<div class="box-left">
+							<a href="#" class="item help">도움말</a>
+							<a href="#" class="item report">신고</a>
+						</div>
+						<div class="box-right">
+							<a href="javascript:0" class="item btn-auto-off">자동완성끄기</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 자동완성 끝-->
 			<button type="submit" class="btn-submit">
 				<i class="icon-search"></i>
 			</button>
 		</form>
+		<a href="http://naver.com" class="link-naver"></a>
+		<div class="service-area">
+			<a href="https://hlp.naver.com/support/welcomePage/guide/help" class="link-set">
+				네이버를 시작페이지로</a>
+			<i class="sa-bar"></i>
+			<a href="https://jr.naver.com" class="link-jrnaver">
+				<i class="ico-jrnaver"></i>
+				<span class="blind">쥬니어네이버</span>
+			</a>
+			<a href="https://happybean.naver.com" class="link-happybin">
+				<i class="ico-happybin"></i>
+				<span class="blind">해피빈</span>
+			</a>
+		</div>
 	</div>
-	<div class="menu-con"></div>
+	<!--search con 끝-->
+	<div class="menu-con">
+		<div class="menu-inner">
+			<div class="menu-group">
+				<ul class="menu-list type-fix">
+					<li class="list-item">
+						<a href="https://mail.naver.com" class="item" data-clk="svc.mail">
+							<i class="ico-mail"></i>
+							메일
+						</a></li>
+					<li class="list-item">
+						<a href="https://section.cafe.naver.com" class="item" data-clk="svc.cafe">카페</a>
+					</li>
+					<li class="list-item">
+						<a href="https://section.blog.naver.com" class="item" data-clk="svc.blog">블로그</a>
+					</li>
+					<li class="list-item">
+						<a href="https://kin.naver.com" class="item" data-clk="svc.kin">지식in</a>
+					</li>
+					<li class="list-item">
+						<a href="https://shopping.naver.com" class="item shop" data-clk="svc.shopping">
+							<span class="blind">쇼핑</span>
+						</a></li>
+					<li class="list-item">
+						<a href="https://shoppinglive.naver.com/home" class="item shoplive" data-clk="svc.shoppinglive">
+							<span class="blind">쇼핑LIVE</span>
+						</a></li>
+					<li class="list-item">
+						<a href="https://order.pay.naver.com/home" class="item" data-clk="svc.pay">Pay</a>
+					</li>
+					<li class="list-item">
+						<a href="https://tv.naver.com" class="item" data-clk="svc.tvcast">
+							<i class="ico-tv"></i>
+							TV
+						</a></li>
+				</ul>
+				<ul class="menu-list favorite-list">
+					<li class="list-item">
+						<a href="https://dict.naver.com" class="item" data-clk="svc.dic">사전</a>
+					</li>
+					<li class="list-item">
+						<a href="https://news.naver.com" class="item" data-clk="svc.news">뉴스</a>
+					</li>
+					<li class="list-item">
+						<a href="https://finance.naver.com" class="item" data-clk="svc.stock">증권</a>
+					</li>
+					<li class="list-item">
+						<a href="https://land.naver.com" class="item" data-clk="svc.land">부동산</a>
+					</li>
+					<li class="list-item">
+						<a href="https://map.naver.com" class="item" data-clk="svc.map">지도</a>
+					</li>
+					<li class="list-item">
+						<a href="https://vibe.naver.com" class="item" data-clk="svc.vibe">VIBE</a>
+					</li>
+					<li class="list-item">
+						<a href="https://book.naver.com" class="item" data-clk="svc.book">책</a>
+					</li>
+					<li class="list-item">
+						<a href="https://comic.naver.com" class="item" data-clk="svc.webtoon">웹툰</a>
+					</li>
+				</ul>
+				<ul class="list-item type-empty" style="display: none;"></ul>
+			</div>
+		</div>
+	</div>
 	<div class="fixed-con content-con"></div>
 	<footer class="footer-con"></footer>
 </body>

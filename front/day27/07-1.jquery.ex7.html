@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ex7-1</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.text-box{ height: 30px; line-height: 30px; border: 1px solid #000;}
+	</style>
+</head>
+<body>
+	<div class="text-box"></div>
+	<div class="container">
+		<input type="checkbox" value="바나나" id="banana">
+		<label for="banana">바나나</label>
+		<input type="checkbox" value="사과" id="apple">
+		<label for="apple">사과</label>
+		<input type="checkbox" value="오렌지" id="orange">
+		<label for="orange">오렌지</label>
+	</div>
+	<script>
+$('input[type=checkbox]').click(function(){
+			let fruit = $(this).val();
+			$('.text-box').text(fruit)
+			//체크된 상태인지 아닌지 확인
+			if($(this).prop('checked')){
+				//체크된 모든 요소들 체크 해제
+				$('input[type=checkbox]').prop('checked', false)
+				//클릭한 요소만 체크
+				$(this).prop('checked', true)
+			}else{
+				//text-box에 빈 문자열 덮어쓰기 or 안에있는요소 삭제
+				$('.text-box').text('')
+			}
+		})
+	</script>
+</body>
+</html>

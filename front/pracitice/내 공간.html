@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JYJ</title>
+	<style>
+		*{padding: 0; margin: 0;}
+		.box{
+			width: 50px; height: 50px; background-color: rgba(137, 43, 226, 0.216);
+			display: inline-block; text-align: center;
+			line-height: 50px; color: white; font-style: bold;
+			position: relative;
+		}
+		.box:nth-of-type(odd){
+			background-color: pink;
+		}
+		.box:nth-last-of-type(1){
+			top: 10px;
+		}
+		.box:nth-last-of-type(2){
+			right: -10px;
+		}
+		.box:nth-last-of-type(3){
+			bottom: 10px;
+		}
+		.box:nth-last-of-type(4){
+			left: -10px;
+			top: 20px;
+		}
+		.container{
+			width: 1200px; padding-top: 20px; box-sizing: border-box;
+			margin: 0 auto; text-align: center;
+			position: relative;
+		}
+		.box1{
+			padding-left: 200px;
+		}
+		.container1{
+			width: 300px; padding-top: 20px;
+			margin: 0 auto; text-align: center;
+		}
+		a{
+			color: rgb(234, 131, 234); text-decoration: none;
+		}
+		a:hover{
+			font-weight: bold; color: rgb(234, 131, 234);
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box">H</div>
+		<div class="box">E</div>
+		<div class="box">L</div>
+		<div class="box">L</div>
+		<div class="box">O</div>
+	</div>
+	<div class="container1">
+		<div class="box1">prd.LYC</div>
+	</div>
+	
+</body>
+</html>

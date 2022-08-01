@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title><ex7-2></ex7-2></title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.text-box{ height: 30px; line-height: 30px; border: 1px solid #000;}
+	</style>
+</head>
+<body>
+	<div class="text-box"></div>
+	<div class="container">
+		<!--  내가한거
+		<input type="checkbox" class="fruit" value="바나나" id="banana">
+		<label for="banana">바나나</label>
+		<input type="checkbox" class="fruit" value="사과" id="apple">
+		<label for="apple">사과</label>
+		<input type="checkbox" class="fruit" value="오렌지" id="orange">
+		<label for="orange">오렌지</label> -->
+		<input type="checkbox" value="바나나" id="banana">
+		<label for="banana">바나나</label>
+		<input type="checkbox" value="사과" id="apple">
+		<label for="apple">사과</label>
+		<input type="checkbox" value="오렌지" id="orange">
+		<label for="orange">오렌지</label>
+	</div>
+	<script>
+		/*
+		var arr = [];
+		$(function(){
+			$('.fruit').click(function(){
+				var val = $(this).val();
+				arr.push(val);
+				$('.text-box').text(arr.join(','));
+			})
+		})
+		*/
+		$('input[type=checkbox]').click(function(){
+			let fruit = $(this).val();
+			$('.text-box').text(fruit)
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>스톱워치</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.view{
+			border: 2px solid black; width: 300px; height: 100px; font-size: 50px;
+			text-align: center; line-height: 100px; margin: 20px auto;
+			letter-spacing: 1px; box-sizing: border-box;
+		}
+		.btn-box{	
+		margin: 0 auto; width: 250px; margin-top: 20px;
+		}
+		.btn-box::after{
+			clear: both; display: block; content: '';
+		}
+		.btn{	float: left; height: 30px; width: 98%; background-color: white;
+		cursor: pointer; margin-top: 20px; display: block;
+		}
+		.record-box{
+			width: 500px; height: 500px; border: 2px solid black;
+			font-size: 20px; text-align: center; margin: 20px auto;
+		}
+		.btn-box>div{
+			width: 50%; float: left;
+		}
+	</style>
+</head>
+<body>
+	<div class="view">00:00:00</div>
+	<div class="btn-box">
+		<div class="left">
+			<button class="btn lab">랩</button>
+			<button class="btn stop">중지</button>
+		</div>
+		<div class="right">
+			<button class="btn start">시작</button>
+			<button class="btn reset">재설정</button>
+		</div>
+	</div>
+	<div class="record-box"></div>
+	<script>
+		var ms = 0;
+		var s = 0;
+		var m = 0;
+		var id = null;
+		$(function(){
+			
+			$('.start').click(function(){
+				if(id == null){
+					id = setInterval(()=>{
+						ms += 10;
+						if(ms == 1000){
+							ms = 0;
+							s++;
+						}
+						if(s == 60){
+							s = 0;
+							m++;
+						}
+						$('.view').text(getStr(m, s, ms));
+					}, 10)
+				}
+				showBtns(true, false, false, true)
+			})
+			$('.stop').click(function(){
+				clearInterval(id)
+				id = null;
+				showBtns(false, true, true, false)
+			})
+			$('.lab').click(function(){
+				if(id != null){
+					var str = '<div class="record-lab">'
+						+ getStr(m, s, ms) + '</div>'
+						$('.record-box').prepend(str);
+				}
+			})
+			$('.reset').click(function(){
+				m = 0; s = 0; ms = 0;
+				$('.view').text(getStr(m, s, ms));
+				$('.record-box').html('');
+				showBtns(true, false, true, false)
+			})
+			showBtns(true, false, true, false)
+		})
+		function getStr(m, s, ms){
+			return fillZero(m) + ':' + fillZero(s) + '.' + fillZero(ms/10)
+		}
+		function fillZero(num){
+			return num < 10 ? '0'+num : ''+num;
+		}
+		function showBtns(lab, reset, start, stop){
+			$('.btn').hide();
+			lab?$('.lab').show():'';
+			reset?$('.reset').show():'';
+			start?$('.start').show():'';
+			stop?$('.stop').show():'';
+		}
+	</script>
+</body>
+</html>

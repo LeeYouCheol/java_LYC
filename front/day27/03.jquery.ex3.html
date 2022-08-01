@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ex1</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.btn1{
+			width: 100px; height: 50px; border: 1px solid black; box-sizing: border-box;
+			position: relative;
+		}
+		.box{
+			width: 200px; height: 200px; border: 1px solid black;
+			display: none; background-color: orange; z-index: 1;
+			position: absolute; top: 40px; left: 30px;
+		}
+		.btn2{
+			position: absolute; right: 0; cursor: pointer;
+			width: 20px; height: 20px; line-height: 20px; text-align: center;
+			border: 1px solid orange;
+		}
+	</style>
+</head>
+<body>
+	<button class="btn1">버튼</button>
+	<div class="box">
+		<span class="btn2">X</span>
+	</div>
+	<script>
+		$(function(){
+			$('.btn1').click(function(){
+				$('.box').show();
+			})
+			$('.btn2').click(function(){
+				$('.box').hide();
+			})
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>롤링 3개 만들기</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		*{	padding: 0; margin: 0;}
+		ul{	list-style: none;}
+		.container1{
+			width: 300px; height: 50px; border: 2px solid black; position: relative;
+			margin-top: 100px; margin-left: 100px; overflow: hidden;
+		}
+		.menu-box1{	width: 1500px;}
+		.menu1{
+			float: left; width: 300px; line-height: 50px; text-align: center;
+			height: 50px; background: white;
+		}
+
+		.container2{
+			width: 300px; height: 50px; border: 2px solid black; position: absolute;
+			top: 500px; left: 100px; overflow: hidden;
+		}
+		.menu-box2{	width: 1200px;}
+		.menu2{
+			float: left; width: 300px; line-height: 50px; text-align: center;
+			height: 50px; background: white;
+		}
+		.btn-box{
+			position: absolute; top: 0px; right: 0px; bottom: 0; padding: 10px;
+			background-color: white;
+		}
+		.btn{
+			text-decoration: none; color: black; font-weight: bold;
+			border: 1px solid rgb(233, 232, 232); border-radius: 50%;
+		}
+
+		.container3{
+			width: 300px; height: 50px; border: 2px solid black; position: absolute;
+			top: 100px; right: 100px; overflow: hidden;
+		}
+		.menu-box3{	width: 1200px;}
+		.menu3{
+			float: left; width: 300px; line-height: 50px; text-align: center;
+			height: 50px; background: white;
+		}
+	</style>
+</head>
+<body>
+	<div class="container1">
+		<ul class="menu-box1">
+			<li class="menu1">YTNnews</li>
+			<li class="menu1">스포츠조선</li>
+			<li class="menu1">세계일보</li>
+			<li class="menu1">동아일보</li>
+			<li class="menu1">이투데이</li>
+		</ul>
+	</div>
+	<div class="container2">
+		<div class="btn-box">
+			<a href="#" class="btn prev"><</a>
+			<a href="#" class="btn next">></a>
+		</div>
+		<ul class="menu-box2">
+			<li class="menu2">환율</li>
+			<li class="menu2">이슈</li>
+			<li class="menu2">증시1</li>
+			<li class="menu2">증시2</li>
+		</ul>
+	</div>
+	<div class="container3">
+		<ul class="menu-box3">
+			<li class="menu3">청주 : 흐림</li>
+			<li class="menu3">서울 : 비</li>
+			<li class="menu3">강원 : 흐림</li>
+			<li class="menu3">전북 : 맑음</li>
+		</ul>
+	</div>
+	<script>
+		$(function(){
+			setInterval(()=>{
+				let height = -$('.menu1').first().height() + 'px';
+				if(!$('.menu1').first().is(':animated') && !$('.container1').is(':hover')){
+					$('.menu1').first().animate({'margin-top' : height},1000, function(){
+						$(this).detach().removeAttr('style').appendTo('.menu-box1');
+				})
+			}
+			}, 2000);
+		})
+		$(function(){
+			setInterval(()=>{
+				let width = -$('.menu2').first().width() + 'px';
+				if(!$('.menu2').first().is(':animated') && !$('.container2').is(':hover')){
+					$('.menu2').first().animate({'margin-left' : width},1000, function(){
+						$(this).detach().removeAttr('style').appendTo('.menu-box2');
+				})
+			}
+			}, 2000);
+		})
+		$(function(){
+			setInterval(()=>{
+				let height = -$('.menu3').first().height() + 'px';
+				if(!$('.menu3').first().is(':animated') && !$('.container3').is(':hover')){
+					$('.menu3').first().animate({'margin-top' : height},1000, function(){
+						$(this).detach().removeAttr('style').appendTo('.menu-box3');
+				})
+			}
+			}, 2000);
+		})
+	</script>
+</body>
+</html>

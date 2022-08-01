@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>전역 함수 예제</title>
+</head>
+<body>
+	<script>
+		/*
+		- isFinite(값) : 값이 유한수인지 알려줌
+		*/
+		var x = 10;
+		console.log(x + '는 유한수? ' + isFinite(x));
+		console.log(x/0 + '는 유한수? ' + isFinite(x/0));
+		console.log('abc' + '는 유한수? ' + isFinite('abc'));
+		var y = [1, 2, 3];
+		console.log(y + '는 유한수? ' + isFinite(y));
+		// isNaN(값) : 숫자가 아닌지를 알려줌
+		console.log(undefined + "는 숫자가 아님? " + isNaN(undefined));
+		console.log(1 + "는 숫자가 아님? " + isNaN(1));
+		console.log('1' + "는 정수가 아님? " + isNaN('1'));
+	</script>
+</body>
+</html>

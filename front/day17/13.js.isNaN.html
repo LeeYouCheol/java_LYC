@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/*
+		- 주어진 배열이 숫자로만 이루어져 있는지 확인하는 코드를 작성
+			- isNaN을 이용
+			- 문자열로 된 숫자는 숫자로 인정
+		*/
+		let arr = [1, 2, 3, 'abc'];
+		let arr2 = [1, 2, 3, '4'];
+		var isNumArray1 = arr.every((v) => !isNaN(v));
+		console.log('arr은 숫자로만 이루어진 배열입니까? ' + isNumArray1);
+		var isNumArray2 = arr2.every((v) => !isNaN(v));
+		console.log('arr2은 숫자로만 이루어진 배열입니까? ' + isNumArray2);
+
+		// 다른방법
+		var isNumArray2 = true;
+		arr2.forEach((v)=>{
+			if(isNaN(v)){
+				isNumArray2 = false;
+			}
+		})
+		console.log('arr2은 숫자로만 이루어진 배열입니까? ' + isNumArray2);
+
+		//다른방법
+		var isNumArray3 = true;
+		for(i=0; i<arr.length; i++){
+			if(isNaN(arr[i])){
+				isNumArray3 = false;
+			}
+		}
+		console.log('arr2은 숫자로만 이루어진 배열입니까? ' + isNumArray3);
+
+		/*
+		- encodeURI(uri) : uri에서 사용하는 특수문자를 제외한 모든 문자를 이스케이프 시퀀스로 처리
+		-	encodeURIComponent(uri) : uri에서 사용하는 특수문자를 포함한 모든 문자를 이스케이프 스퀀스로 처리
+		- decodeURI(uri) : 인코드된 uri를 해독하여 uri로 변환
+		- decodeURIComponent(uri) : 인코드된 uri를 해독하여 uri로 변환
+		*/
+		var uri = "http://google.com/search.php?name=홍길동&city=서울";
+		var enc1 = encodeURI(uri);
+		var enc2 = encodeURIComponent(uri);
+		console.log(enc1);
+		console.log(enc2);
+		var dec1 = decodeURI(enc1);
+		var dec2 = decodeURIComponent(enc2);
+		console.log(dec1);
+		console.log(dec2);
+		/*
+		- escape(문자열) : 문자열을 이스케이프 시퀀스로 변환
+		- unescape(문자열) : 이스케이프 시퀀스로 된 문자열을 문자열로 변환
+		*/
+		var str = '#ffffff';
+		var encdeStr = escape(str);
+		var decodeStr = unescape(encdeStr);
+		console.log(encdeStr);
+		console.log(decodeStr);
+	</script>
+</body>
+</html>

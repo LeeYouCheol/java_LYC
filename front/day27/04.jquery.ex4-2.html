@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ex4</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+
+	</style>
+</head>
+<body>
+	<!-- 내가한거 -->
+	<!-- <input type="checkbox" class="check" value="바나나" name="바나나">바나나 
+	<input type="checkbox" class="check" value="사과" name="사과">사과
+	<input type="checkbox" class="check" value="오렌지" name="오렌지">오렌지-->
+
+	<!-- 1번째방법 -->
+	<input type="checkbox" id="banana" value="바나나">
+	<label for="banana">바나나</label>
+	<input type="checkbox" id="apple" value="사과">
+	<label for="apple">사과</label>
+	<input type="checkbox" id="orange" value="오렌지">
+	<label for="orange">오렌지</label>
+	<script>
+		/*
+		2. 이벤트 등록
+		- input태그 이면서 type속성이 checkbox인 요소를 클릭
+		3. 이벤트 구현
+		- input[type=checkbox] 클릭 : {선택한 요소의 value}를 선택했습니다 알림창
+		*/
+		$('input[type=checkbox]').click(function(){
+			let fruit = $(this).val();
+			alert(`${fruit}를 선택했습니다`)
+		})
+	</script>
+</body>
+</html>

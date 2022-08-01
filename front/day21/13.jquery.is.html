@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>is 예제</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.box{
+			position: relative; width: 100px; height: 100px; background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<button class="btn-left">좌</button>
+	<button class="btn-top">상</button>
+	<button class="btn-bottom">하</button>
+	<button class="btn-right">우</button>
+	<button class="btn-total">통합버튼</button> <input type="checkbox" class="ck">
+	<div class="box"></div>
+	<div class="box"></div>
+	<script>
+		/*
+		$(function(){
+			$('.btn-right').click(function(){
+				$('.box').animate({'margin-left' : '+=300px'}, 500)
+			})
+			$('.btn-bottom').click(function(){
+				$('.box').animate({'margin-top' : '+=300px'}, 500)
+			})
+			$('.btn-left').click(function(){
+				$('.box').animate({'margin-left' : '-=300px'}, 500)
+			})
+			$('.btn-top').click(function(){
+				$('.box').animate({'margin-top' : '-=300px'}, 500)
+			})
+		})
+		*/
+		$(function(){
+			$('.btn-total').click(function(){
+				const box = $('.box');
+				//box가 멈춰있으면 실행, 아니면 아무것도 안함
+				if(!box.is(':animated')){
+					box.animate({'margin-left' : '+=300px'}, 500);
+					box.animate({'margin-top' : '+=300px'}, 500);
+					box.animate({'margin-left' : '-=300px'}, 500);
+					box.animate({'margin-top' : '-=300px'}, 500);
+				}
+			})
+			$('.box').click(function(){
+				if($(this).index() == 1){
+					console.log('첫번째 요소 입니다')
+				}else{
+					console.log('첫번째 요소가 아닙니다')
+				}
+			})
+			$('ck').click(function(){
+				console.log($(this).is(':checked'))
+			})
+		})
+	</script>
+</body>
+</html>

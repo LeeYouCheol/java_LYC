@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>signup test</title>
+	<style>
+		.container{
+			text-align: center; border: 1px solid black; box-sizing: border-box;
+			width: 600px; height: 600px; margin: 0 auto;
+		}
+		.text-box{
+			border: 1px solid gainsboro; width: 500px; height: 30px;
+			font-size: 15px;
+		}
+		.box{
+			margin: 10px;
+		}
+		.check-gender{
+			text-align: left; width: 506px; margin: 0 auto;
+		}
+		.check-box{
+			display: inline-block;
+		}
+		.birth-box{
+			display: inline-block; margin-bottom: 20px; margin-top: 10px;
+		}
+		.text-year{
+			border: 1px solid gainsboro; width: 161px; height: 20px;
+			font-size: 15px; height: 30px;
+		}
+		.month-select{
+			border: 1px solid gainsboro; width: 161px;
+			font-size: 15px; height: 34px;
+		}
+		.text-day{
+			border: 1px solid gainsboro; width: 161px; height: 20px;
+			font-size: 15px; height: 30px;
+		}
+		.btn-signup{
+			border: 1px solid rgb(242, 236, 236); background-color: white;
+			width: 200px; height: 40px; font-size: 20px; margin-top: 10px;
+		}
+		.btn-signup:hover{
+			background-color: rgb(242, 236, 236); cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>회원가입</h1>
+		<form>
+			<div class="box id-box">
+				<input type="text" class="text-box" name="id" placeholder="아이디">
+			</div>
+			<div class="box pw-box">
+				<input type="text" class="text-box" name="pw" placeholder="비밀번호">
+			</div>
+			<div class="box pw2-box">
+				<input type="text" class="text-box" name="pw2" placeholder="비밀번호확인">
+			</div>
+		<div class="check-gender">
+			<div class="check-box">
+				<input type="checkbox" class="check" name="gender" value="male">남성
+			</div>
+			<div class="check-box">
+				<input type="checkbox" class="check" name="gender" value="female">여성
+			</div>
+		</div>
+		<div class="birth-box">
+			<input type="text" name="year" class="text-year" placeholder="년도">
+		</div>
+		<div class="birth-box">
+			<select name="month" class="month-select">
+				<option value="0">월</option>
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+				<option>6</option>
+				<option>7</option>
+				<option>8</option>
+				<option>9</option>
+				<option>10</option>
+				<option>11</option>
+				<option>12</option>
+			</select>
+		</div>
+		<div class="birth-box">
+			<input type="text" name="day" class="text-day" placeholder="일">
+		</div>
+			<button type="submit" class="btn-signup">회원가입</button>
+		</div>
+	</form>
+	</div>
+</body>
+</html>

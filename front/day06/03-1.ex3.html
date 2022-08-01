@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		body{margin: 0;}
+		.container{
+			height: 100vh; box-sizing: border-box;
+			padding: 10px; float: right;
+		}
+		.first{
+			height: 50px; width: 50px; background-color: rgb(243, 164, 243);
+			margin-right: 10px; float: left;
+		}
+		.sec{
+			height: 50px; width: 50px; background-color: pink;
+			margin-right: 10px; float: left;
+		}
+		.third{
+			height: 50px; width: 50px; background-color: rgb(214, 40, 57);
+			float: left;
+		}
+		body::after{
+			content: ''; display: block; clear: both;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="first">1</div>
+		<div class="sec">2</div>
+		<div class="third">3</div>
+	</div>
+</body>
+</html>

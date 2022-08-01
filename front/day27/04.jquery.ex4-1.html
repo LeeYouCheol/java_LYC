@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ex4</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+
+	</style>
+</head>
+<body>
+	<!-- 1번째방법 -->
+	<input type="checkbox" id="banana" value="바나나">
+	<label for="banana">바나나</label>
+	<input type="checkbox" id="apple" value="사과">
+	<label for="apple">사과</label>
+	<input type="checkbox" id="orange" value="오렌지">
+	<label for="orange">오렌지</label>
+	<script>
+		/*
+		1-1번째 방법
+		아이디가 banana인 요소를 클릭
+		요소 : #banana
+		이벤트 : click
+		$(function(){
+			$('#banana').click(function(){
+				alert('바나나를 선택했습니다')
+			})
+			$('#apple').click(function(){
+				alert('사과를 선택했습니다')
+			})
+			$('#orange').click(function(){
+				alert('오렌지를 선택했습니다')
+			})
+		})
+		*/
+		/* 1-2번 방법
+		$(function(){
+			$('#banana').click(function(){
+				let fruit = $('#banana').val();
+				alert(`${fruit}를 선택했습니다`)
+			})
+			$('#apple').click(function(){
+				let fruit = $('#apple').val();
+				alert(`${fruit}를 선택했습니다`)
+			})
+			$('#orange').click(function(){
+				let fruit = $('#orange').val();
+				alert(`${fruit}를 선택했습니다`)
+			})
+		})*/
+		$(function(){
+			$('#banana').click(function(){
+				let fruit = $(this).val();
+				alert(`${fruit}를 선택했습니다`)
+			})
+			$('#apple').click(function(){
+				let fruit = $(this).val();
+				alert(`${fruit}를 선택했습니다`)
+			})
+			$('#orange').click(function(){
+				let fruit = $(this).val();
+				alert(`${fruit}를 선택했습니다`)
+			})
+		})
+	</script>
+</body>
+</html>

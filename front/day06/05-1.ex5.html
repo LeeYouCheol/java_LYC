@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		body{margin: 0;}
+		.container{
+			height: 50px; border: solid; color: rgb(236, 235, 235);
+		}
+		.box1{
+			border: none; border-right: solid; border-color: rgb(236, 235, 235);
+			height: 50px; width: calc((100% - 10px * 2) / 3); background-color: white;
+			float: left; font-weight: bold;
+		}
+		.box2{
+			border: none; border-right: solid; border-color: rgb(236, 235, 235);
+			height: 50px; width: calc((100% - 10px * 2) / 3); background-color: white;
+			float: left; font-weight: bold;
+		}
+		.box3{
+			border: none;
+			height: 50px; width: calc((100% - 10px * 2) / 3); background-color: white;
+			float: left; font-weight: bold;
+		}
+		body::after{
+			content: ''; display: block; clear: both;
+		}
+	</style>
+</head>
+<body>
+		<div class="container">
+			<a href="http://naver.com">
+				<button class="box1">메뉴1</button>
+			</a>
+			<a href="https://comic.naver.com/index">
+				<button class="box2">메뉴2</button>
+			</a>
+			<a href="https://news.naver.com/">
+				<button class="box3">메뉴3</button>
+			</a>
+		</div>
+</body>
+</html>

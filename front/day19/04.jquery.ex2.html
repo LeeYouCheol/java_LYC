@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>좌우 이동 메뉴박스 이동 제한</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		*{	padding: 0; margin: 0;}
+		.hold-box{
+			width: 300px; height: 100px; border: 3px solid red; box-sizing: border-box;
+			overflow: hidden;
+		}
+		.move-box{
+			width: 600px; height: 100%; box-sizing: border-box;
+		}
+		.menu-box{
+			width: 100px; height: 100%; box-sizing: border-box; background-color: rgb(150, 150, 222);
+			text-align: center; line-height: 80px; float: left; margin-left: -1px;
+		}
+		.menu-box:nth-child(2n){
+			background-color: lavenderblush;
+		}
+	</style>
+</head>
+<body>
+	<button class="btn btn-prev">이전</button>
+	<button class="btn btn-next">다음</button>
+	<div class="hold-box">
+		<div class="move-box">
+			<div class="menu-box">메뉴1</div>
+			<div class="menu-box">메뉴2</div>
+			<div class="menu-box">메뉴3</div>
+			<div class="menu-box">메뉴4</div>
+			<div class="menu-box">메뉴5</div>
+			<div class="menu-box">메뉴6</div>
+		</div>
+	</div>
+	<script>
+		var min = 1;
+		var max = 4;
+		var page = 1;
+		$(function(){
+			$('.btn-prev').click(function(){
+				if(page != min){
+					page--;
+					$('.move-box').animate({'margin-left' : '+=100px'}, 500)
+				}
+			})
+			$('.btn-next').click(function(){
+				if(page != max){
+					page++;
+					$('.move-box').animate({'margin-left' : '-=100px'}, 500)
+				}
+			})
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ex5</title>
+	<script src="../js/jquery.js"></script>
+</head>
+<body>
+	<!-- 내가한거
+	<input type="checkbox" class="check" value="바나나" name="바나나">바나나 
+	<input type="checkbox" class="check" value="사과" name="사과">사과
+	<input type="checkbox" class="check" value="오렌지" name="오렌지">오렌지-->
+
+	<input type="checkbox" id="banana" value="바나나">
+	<label for="banana">바나나</label>
+	<input type="checkbox" id="apple" value="사과">
+	<label for="apple">사과</label>
+	<input type="checkbox" id="orange" value="오렌지">
+	<label for="orange">오렌지</label>
+	<script>
+		/*
+		내가한거
+		$(function(){
+			$('.check').click(function(){
+				//val이라는 객체를 만듬 => var val
+				//$('.check').val(); => check 클래스의 value값을 val의 값으로 지정
+				var val = $('.check').val();
+				if($('.check').prop('checked')){
+					alert(val +'가 선택되었습니다')
+				}else{
+					alert(val + '가 해제되었습니다')
+				}
+			})
+		})
+		*/
+		$('input[type=checkbox]').click(function(){
+			let fruit = $(this).val();
+			if($(this).prop('checked')){
+				alert(`${fruit}를 선택했습니다`)
+			}else{
+				alert(`${fruit}를 해제했습니다`)
+			}
+		})
+	</script>
+</body>
+</html>

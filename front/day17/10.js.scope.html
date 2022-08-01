@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>scope 예제</title>
+</head>
+<body>
+	<script>
+		var num = 10; // 얘가 전역변수
+		function test1(){
+			var num = 20; // 얘가 지역변수
+			console.log('지역변수 num : ' + num);
+			console.log('전역변수 num : ' + window.num);
+		}
+		// => 위의 코드는 실행이 되지 않는다. 왜냐하면 함수를 호출하지 않았기 때문이다.
+
+		var num = 10; // 얘가 전역변수
+		function test1(){
+			var num = 20; // 얘가 지역변수
+			console.log('지역변수 num : ' + num);
+			console.log('전역변수 num : ' + window.num);
+		}
+		test1();
+
+		var num = 10;
+
+		function test2(){
+			console.log('지역변수 num : ' + num);
+			console.log('전역변수 num : ' + window.num);
+			var num = 20;
+			console.log('지역변수 num : ' + num);
+			console.log('전역변수 num : ' + window.num);
+		}
+		test2();
+		/*
+		var num;
+		function test2(){
+			var num; //함수 내에서 호이스팅이 일어나서 변수 선언이 위로 올라온다
+			console.log('지역변수 num : ' + num);
+			console.log('전역변수 num : ' + window.num);
+			num = 20;
+			console.log('지역변수 num : ' + num);
+			console.log('전역변수 num : ' + window.num);
+		}
+		num = 10;
+		test2();
+		*/
+		// 이렇게 함수를 호출해야 실행됨
+	</script>
+</body>
+</html>

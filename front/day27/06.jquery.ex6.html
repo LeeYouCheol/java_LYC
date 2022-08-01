@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ex6</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.container{
+			position: relative;
+		}
+		.box{
+			width: 50px; height: 50px; border: 1px solid black; box-sizing: border-box;
+			position: absolute; left: 450px; top: 0px; 
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<input type="text" class="textbox1">
+		<input type="text" class="textbox2">
+		<div class="box"></div>
+		<button class="btn">계산</button>
+	</div>
+	<script>
+		var arr = [];
+		$(function(){
+			$('.btn').click(function(){
+				//textbox1의 문자열을 가져옴
+				var val1 = $('.textbox1').val()
+				val1 = parseInt(val1); 
+				//textbox2의 문자열을 가져옴
+				var val2 = $('.textbox2').val()
+				val2 = parseInt(val2);
+				//textbox1과 textbox2의 숫자를 더해서 box에
+				$('.box').text(val1 + val2);
+			})
+		})
+	</script>
+</body>
+</html>

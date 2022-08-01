@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>박스 가로로 움직이기</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		*{	padding: 0; margin: 0;}
+		.container{
+			width: 300px; height: 50px; box-sizing: border-box;
+			border: 1px solid red; position: relative; overflow: hidden;
+		}
+		.menu-bar{
+			width: 600px; height: 50px; box-sizing: border-box;
+			border: 1px solid green; margin-top: -1px; margin-left: -1px;
+		}
+		ul{	list-style: none; float: left;}
+		li{	float: left; width: 100px; height: 50px; box-sizing: border-box;
+				border: 1px solid black; margin-top: -1px; margin-left: -1px;
+				text-align: center; line-height: 46px;}
+	</style>
+</head>
+<body>
+	<button class="prev">이전</button>
+	<button class="next">다음</button>
+	<div class="container">
+		<div class="menu-bar">
+			<ul class="menu-item">
+				<li class="item">자동차</li>
+				<li class="item">경제</li>
+				<li class="item">정치</li>
+				<li class="item">음식</li>
+				<li class="item">화장품</li>
+				<li class="item">패션</li>
+			</ul>
+		</div>
+	</div>
+	<script>
+		$('.prev').click(function(){
+			$('.menu-bar').animate({'margin-left' : '+=100px'}, 200);
+		})
+		$('.next').click(function(){
+			$('.menu-bar').animate({'margin-left' : '-=100px'}, 200);
+		})
+	</script>
+</body>
+</html>

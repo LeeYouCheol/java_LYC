@@ -199,6 +199,30 @@ a{text-decoration: none;}
 	letter-spacing: -1px;
 }
 
+.menu-con .menu-group .list-nav{
+	display: none;
+}
+.menu-con .menu-group .list-nav{
+	margin-left: 12px; float: left; font-size: 15px; line-height: 30px;
+	font-weight: 700; color: #000;
+}
+.menu-con .menu-group .list-nav::after{
+	content: ''; display: table; table-layout: fixed; clear: both;
+}
+.menu-con .menu-group .list-nav .nav-item{
+	float: left;
+}
+.menu-con .menu-group .list-nav .nav-item+.nav-item{
+	margin-left: 8px;
+}
+.menu-con .menu-group .list-nav .nav-item .empty-box.box{
+	width: 68px; height: 28px; background-color: #f7f9fa;
+	border: 1px solid #dae1e6; border-radius: 2px;
+}
+.menu-con .menu-group .list-nav .empty-box.type-point{
+	background-color: white; border-color: #19ce60;
+}
+
 /* 더보기 버튼*/
 .menu-con .btn-more{
 	float: left; margin-left: 17px; font-size: 13px; line-height: 30px;
@@ -214,6 +238,9 @@ a{text-decoration: none;}
 .menu-con .btn-more.fold{
 	color: #0ecd5a;
 }
+.menu-con .btn-more>.title{
+	float: left;
+}
 .menu-con .btn-more>.title:nth-child(2){
 	display: none;
 }
@@ -225,6 +252,112 @@ a{text-decoration: none;}
 }
 .menu-con .btn-more.fold::after{
 	background-position: -444px -330px;
+}
+
+/* 더보기 클릭후 서비스 박스*/
+.more-service-con{
+	position: absolute; top: 52px; right: 0; left: 0; padding: 20px 30px 22px;
+	background-color: #fff; border-top: 1px solid #e4e8eb;
+	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.12); z-index: 100; display: none;
+}
+.more-service-con .group-service{
+	overflow: hidden; display: table; width: 1128px; margin: 0 auto;
+	border: 1px solid #e4e8eb; border-width: 0 1px; table-layout: fixed;
+}
+.more-service-con .group-service .list-service{
+	display: table-cell; padding: 0 14px 0 15px; font-size: 13px;
+	line-height: 26px; letter-spacing: -.25px;
+}
+.more-service-con .group-service .list-service .service-title{
+	margin-bottom: 3px; color: #000; font-weight: 700;
+}
+.more-service-con .group-service .list-service .service-title .service-data{
+	overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.more-service-con .list-service .service-data a:hover{
+	text-decoration: underline;
+}
+.more-service-con .group-service .list-service+.list-service{
+	border-left: 1px solid #e4e8eb;
+}
+.menu-con .menu-group .btn-area{
+	display: block; position: absolute; top: 0; right: 0; width: 270px;
+	padding: 11px 0; background-color: #fff; text-align: right; z-index: 10;
+	display: none;
+}
+.menu-con .menu-group .btn-area .btn{
+	display: inline-block; padding: 7px 13px 5px; background-color: #fff;
+	border: 1px solid #dae1e6; border-radius: 15px; font-size: 12px;
+}
+.menu-con .menu-group .btn-area .btn-set::before{
+	display: inline-block; width: 11px; height: 11px;
+	background-position: -444px -142px; vertical-align: top; content: '';
+	margin: 2px 5px 0 0;
+	background-image: url(	https://s.pstatic.net/static/www/img/uit/sp_main_4f8ccb.png);
+	background-size: 457px 434px;
+}
+.menu-con .menu-group .btn-area .btn-box2{
+	display: none;
+}
+.menu-con .menu-group .btn-area .btn-box2 .btn-reset::before{
+	display: inline-block; width: 10px; height: 13px;
+	background-position: -444px -114px; vertical-align: top; content: '';
+	margin-right: 6px;
+	background-image: url(https://s.pstatic.net/static/www/img/uit/sp_main_4f8ccb.png00);
+	background-size: 457px 434px;
+}
+.menu-con .menu-group .btn-area .btn-save{
+	background-color: #19ce60; border-color: #00c73c;
+	color: white;
+}
+.menu-con .menu-group .btn-area .btn a:hover{
+	text-decoration: underline;
+}
+
+/*-- 더보기 누르면 나오는 메뉴 페이보릿 선택메뉴 */
+.more-service-con .group-service-edit{
+	overflow: hidden; display: table; width: 1128px; margin: 0 auto;
+	border: 1px solid #e4e8eb; border-width: 0 1px; table-layout: fixed;
+	display: none;
+}
+.more-service-con .group-service-edit .list-service{
+	display: table-cell; padding: 0 14px 0 15px; font-size: 13px; line-height: 26px;
+	letter-spacing: -.25px;
+}
+.more-service-con .group-service-edit .list-service+.list-service{
+	border-left: 1px solid #e4e8eb;
+}
+.more-service-con .group-service-edit .list-service .service-title{
+	margin-bottom: 3px; color: #000; font-weight: 700;
+}
+.more-service-con .group-service-edit .list-service .service-title .service-data{
+	overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.more-service-con .group-service-edit .list-service label{
+	position: relative;
+}
+.more-service-con .group-service-edit .list-service .check{
+	position: absolute; top: 0; left: 0; opacity: 0; width: 16px; height: 16px;
+}
+.more-service-con .group-service-edit .list-service .check{
+	font-size: 12px; line-height: 16px; color: #202020; border-radius: 0;
+	border: 0;
+}
+.more-service-con .group-service-edit .list-service .check:focus{
+	opacity: 1;
+}
+
+.more-service-con .group-service-edit .list-service .service-data .ico-chk{
+	display: inline-block; width: 16px; height: 16px;
+	background-position: -420px -365px; vertical-align: top; margin: 4px 9px 0 0;
+	background-image: url(https://s.pstatic.net/static/www/img/uit/sp_main_4f8ccb.png);
+	background-size: 457px 434px;
+}
+.group-service-edit .list-service .service-data.chk-check .ico-chk{
+	display: inline-block; width: 16px; height: 16px;
+	background-position: -420px -347px; vertical-align: top;
+	background-image: url(https://s.pstatic.net/static/www/img/uit/sp_main_4f8ccb.png);
+	background-size: 457px 434px;
 }
 
 /*컨텐츠 박스*/

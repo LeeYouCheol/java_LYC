@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>네이버 테마캐스트</title>
+	<style>
+		*{padding: 0; margin: 0; color: #202020;}
+		ul,ol{	list-style: none;	}
+		a{text-decoration: none;}
+		.content-con .mecast{
+			letter-spacing: -0.25;
+			font-size: 12px; line-height: 16px;
+			min-height: 100px; margin-top: 35px;
+		}
+		.content-con .mecast .me-head{margin-bottom: 17px;}
+		.content-con .mecast .box-title{	float: left;}
+		.content-con .mecast .info-area{		float: right;}
+		.content-con .mecast .me-head::after{	clear: both; content: ''; display: block;}
+		.content-con .mecast .title{
+			font-weight: bold; font-size: 14px;
+			line-height: 16px;
+		}
+		.content-con .mecast .dsc{
+			font-size: 12px; line-height: 16px;
+			margin-left: 8px;
+		}
+		.content-con .mecast .info{color: gray;}
+		.content-con .mecast .bold{ font-weight: bold; color: #000;}
+		.content-con .mecast .btn-set{ color: #505050; margin-left: 14px; position: relative;}
+		.content-con .mecast .btn-set::before{
+			background-image: url(https://s.pstatic.net/static/www/img/uit/sp_main_4f8ccb.png);
+			background-size: 457px 434px;
+			content: ''; width: 11px; height: 11px; background-position: -444px -194px;
+			display: inline-block; opacity: .7; margin-right: 4px; vertical-align: -1px;
+		}
+		.content-con .mecast .btn-set::after{
+			content: ''; width: 1px; height: 12px; position: absolute;
+			background-color: #e4e8eb; top: 2px; left: -8px;
+		}
+		.content-con .mecast .btn-set:hover{
+			text-decoration: underline;
+		}
+		.content-con .mecast .btn-set:hover::before{
+			opacity: 1;
+		}
+		.content-con .mecast .bottom-in{
+			position: relative; overflow: hidden;
+		}
+		.content-con .mecast .list-theme{
+			font-size: 0; line-height: 0; white-space: nowrap;
+		}
+		.content-con .mecast .list-theme::before{
+			content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+			border: 1px solid #dae1e6;
+		}
+		.content-con .mecast .item-theme{
+			width: 94px; display: inline-block; position: relative;
+		}
+		.content-con .mecast .item-theme:nth-child(8n+1){
+			width: 92px;
+		}
+		.content-con .mecast .btn-theme{
+			line-height: 49px; font-size: 13px; color: black;
+			display: block; border-right: 1px solid #dae1e6; text-align: center;
+			font-weight: bold;
+		}
+		.content-con .mecast .btn-theme.enter:hover{ color: #e65da0;}
+		.content-con .mecast .btn-theme.sports:hover{ color: #0147b5;}
+		.content-con .mecast .btn-theme.car:hover{ color: #4a94e1;}
+		.content-con .mecast .btn-theme.webtoon:hover{ color: #66c971;}
+		.content-con .mecast .btn-theme.economic:hover{ color: #35ae5e;}
+		.content-con .mecast .btn-theme.subscribe:hover{ color: #5290ff;}
+		.content-con .mecast .btn-theme.recipe:hover{ color: #ebaa00;}
+		.content-con .mecast .btn-theme.living:hover{ color: #c08d31;}
+		.content-con .mecast .btn-theme.bookstore:hover{ color: #42be6f;}
+		.content-con .mecast .btn-theme.beauty:hover{ color: #8449ca;}
+
+		.content-con .mecast .btn-theme.enter.active{ background-color: #e65da0;}
+		.content-con .mecast .btn-theme.sports.active{ background-color: #0147b5;}
+		.content-con .mecast .btn-theme.car.active{ background-color: #4a94e1;}
+		.content-con .mecast .btn-theme.webtoon.active{ background-color: #66c971;}
+		.content-con .mecast .btn-theme.economic.active{ background-color: #35ae5e;}
+		.content-con .mecast .btn-theme.subscribe.active{ background-color: #5290ff;}
+		.content-con .mecast .btn-theme.recipe.active{ background-color: #ebaa00;}
+		.content-con .mecast .btn-theme.living.active{ background-color: #c08d31;}
+		.content-con .mecast .btn-theme.bookstore.active{ background-color: #42be6f;}
+		.content-con .mecast .btn-theme.beauty.active{ background-color: #8449ca;}
+
+		.content-con .mecast .btn-theme.active,
+		.content-con .mecast .btn-theme.active:hover{
+			color: white;
+		}
+		.content-con .mecast .btn-theme.active{
+			margin: 0 -1px; border-radius: 1px;
+			box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+		}
+		.content-con .mecast .bottom{	position: relative;}
+		.content-con .mecast .btn-prev, .btn-next{
+			width: 40px; height: 40px; position: absolute;
+			background-image: url(https://s.pstatic.net/static/www/img/uit/sp_main_4f8ccb.png);
+			background-size: 457px 434px;
+			background-position: -128px -345px;
+			top: 6px; left: -23px; z-index: 10;
+		}
+		.content-con .mecast .btn-prev:hover{
+			background-position: -44px -345px;
+		}
+		.content-con .mecast .btn-next{
+			left: auto; right: -18px; background-position: -86px -345px;
+		}
+		.content-con .mecast .btn-next:hover{
+			background-position: -170px -345px;
+		}
+	</style>
+</head>
+<body>
+	<div class="mecast">
+		<div class="me-head">
+			<div class="group-title">
+				<span class="title">오늘 읽을만한 글</span><span class="dsc">주제별로 분류된 다양한 글 모음</span>
+			</div>
+			<div class="info-area">
+				<span class="info"><span class="bold">676</span> 개의 글</span>
+				<a href="#" class="btn-set">관심주제 설정</a>
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="bottom-in">
+				<ul class="list-theme">
+					<li class="item-theme">
+						<a href="#" class="btn-theme enter">엔터</a>
+					</li>
+					<li class="item-theme">
+						<a href="#" class="btn-theme sports">스포츠</a>
+					</li>
+					<li class="item-theme">
+						<a href="#" class="btn-theme car active">자동차</a>
+					</li>
+					<li class="item-theme">
+						<a href="#" class="btn-theme webtoon">웹툰</a>
+					</li>
+					<li class="item-theme">
+						<a href="#" class="btn-theme economic">경제</a>
+					</li>
+					<li class="item-theme">
+						<a href="#" class="btn-theme subscribe">추천구독</a>
+					</li>
+					<li class="item-theme">
+						<a href="#" class="btn-theme recipe">레시피</a>
+					</li>
+					<li class="item-theme">
+						<a href="#" class="btn-theme living">리빙</a>
+					</li>
+					<li class="item-theme">
+						<a href="#" class="btn-theme bookstore">책방</a>
+					</li>
+					<li class="item-theme">
+						<a href="#" class="btn-theme beauty">패션뷰티</a>
+					</li>
+				</ul>
+			</div>
+			<div class="box-btns">
+				<a href="#" class="btn-prev"></a>
+				<a href="#" class="btn-next"></a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

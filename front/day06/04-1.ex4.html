@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>양옆, 위아래 분할</title>
+	<style>
+		body{margin: 0;}
+		.container{
+			height: 100vh; box-sizing: border-box;
+			padding: 10px;
+		}
+		.left{
+			height: 100%; width: calc(50% - 5px);
+			background-color: yellow; float: left;
+			padding: 10px; box-sizing: border-box;
+		}
+		.left-box{
+			height: 50%; background-color: blue;
+		}
+		.left-box.box2{
+			margin-top: 10px;
+		}
+		.right{
+			height: 100%; width: calc(50% - 5px);
+			background-color: red; float: right;
+			padding: 10px; box-sizing: border-box;
+		}
+		.right-box{
+			height: 50%; background-color: green;
+		}
+		.right-box.box2{
+			margin-top: 10px;
+		}
+		body::after{
+			content: ''; display: block; clear: both;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="left">
+			<div class="left-box box1"></div>
+			<div class="left-box box2"></div>
+		</div>
+		<div class="right">
+			<div class="right-box box1"></div>
+			<div class="right-box box2"></div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>class 예제</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.box{
+			width: 100px; height: 100px; vertical-align: top;
+			display: inline-block; background-color: yellow;
+		}
+		.select{	background-color: red;}
+	</style>
+</head>
+<body>
+	<div class="box">1</div>
+	<div class="box">2</div>
+	<div class="box">3</div>
+	<div class="box">4</div>
+	<script>
+		// hasClass() : 요소에 클래스가 있는지 없는지 알려줌
+		$(function(){
+			//$('.box').addClass('select');//모든 박스에 select를 추가=> 모두 빨강
+			//$('.box').removeClass('select');//모든 박스에 select를 제거=> 모두 노랑
+			//$('.box').toggleClass('select');//모든 박스에 select를 토글=> select를 추가=> 모두 빨강
+			//박스를 클릭했을때 클릭한 박스가 노랑이면 빨강으로, 빨강이면 노랑으로 바꾸도록 코드를 수정
+			$('.box').click(function(){
+				//$(this).addClass('select'); 클릭하면 색을 다시 못바꿈
+				//$(this).toggleClass('select'); 클릭할 때마다 색이 바뀜
+				$('.box').removeClass('select');
+				$(this).addClass('select');
+			})
+		})
+	</script>
+</body>
+</html>

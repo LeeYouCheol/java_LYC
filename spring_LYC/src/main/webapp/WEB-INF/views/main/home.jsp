@@ -46,4 +46,5 @@
 		})
 	})
 	</script>
+	${user.id} <!-- user.getID()가 호출되는것이다. -->>
 </div>

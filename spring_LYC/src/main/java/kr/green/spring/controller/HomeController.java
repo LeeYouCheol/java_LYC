@@ -1,21 +1,22 @@
-package kr.green.spring;
+package kr.green.spring.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.green.spring.serveice.MemberService;
+import kr.green.spring.vo.MemberVO;
+
 
 @Controller
 public class HomeController {
+	
+	@Autowired
+	MemberService memberService;
+	
 	// http://localhost:8080/spring/main/home
 	/*	접근제한자 : public 고정
 	 * 	리턴타입 : ajax를 이용한 경우는 제외하고는 기본적으로 ModelAndView 고정
@@ -61,6 +62,14 @@ public class HomeController {
 	@RequestMapping(value= "/login", method=RequestMethod.GET)
 	public ModelAndView loginGet(ModelAndView mv) throws Exception{
 		mv.setViewName("/main/login");
+		return mv;
+	}
+	@RequestMapping(value= "/login", method=RequestMethod.POST)
+	public ModelAndView loginPost(ModelAndView mv, MemberVO member) throws Exception{
+		mv.setViewName("redirect:/login");
+		System.out.println(member);
+		String email = memberService.getEmail(member.getMe_id());
+		System.out.println("이메일 : "+email);
 		return mv;
 	}
 }

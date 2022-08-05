@@ -85,7 +85,7 @@ public class BoardController {
 			@PathVariable("bd_num")Integer bd_num, HttpSession session) {
 		MemberVO user = (MemberVO) session.getAttribute("user");
 		boardService.deleteBoard(bd_num, user);
-		mv.setViewName("/board/update");
+		mv.setViewName("redirect:/board/list");
 		return mv;
 	}
 }

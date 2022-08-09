@@ -31,7 +31,7 @@
       	<tr>
         	<td>${board.bd_num}</td>
         	<td>
-        		<a href=""#>
+        		<a href="<%=request.getContextPath()%>/board/select/${board.bd_num}">
         		${board.bd_title}
         		</a>
         	</td>

@@ -43,7 +43,7 @@ public class BoardController {
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		//System.out.println(user);
 		boardService.isertBoard(board,user);
-		mv.setViewName("redirect://board/list");
+		mv.setViewName("redirect:/board/list");
 		return mv;
 	}
 	@RequestMapping(value= "/board/select/{bd_num}", method=RequestMethod.GET)

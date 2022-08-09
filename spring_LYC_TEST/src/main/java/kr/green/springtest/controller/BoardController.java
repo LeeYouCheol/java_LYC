@@ -2,6 +2,8 @@ package kr.green.springtest.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.springtest.service.BoardService;
 import kr.green.springtest.vo.BoardVO;
+import kr.green.springtest.vo.MemberVO;
 
 @Controller
 public class BoardController {
@@ -39,5 +42,19 @@ public class BoardController {
 		mv.setViewName("/board/select");
 		return mv;
 	}
-	
+	//글쓰기
+	@RequestMapping(value="/board/insert", method=RequestMethod.GET)
+	public ModelAndView boardInsetGet(ModelAndView mv) {
+		mv.setViewName("/board/insert");
+		return mv;
+	}
+	@RequestMapping(value="/board/insert", method=RequestMethod.POST)
+	public ModelAndView boardInsertPost(ModelAndView mv, BoardVO board, HttpSession session) {
+		//로그인한 회원 정보를 확인
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		//보드서비스에게 게시물과 아이디를 주고 일을 시킴
+		boardService.insertBoard(board,user);
+		mv.setViewName("redirect:/board/list");
+		return mv;
+	}
 }

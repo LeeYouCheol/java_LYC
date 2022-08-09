@@ -33,7 +33,7 @@
 		</div>
 		<div class="form-group">
   			<label for="">내용:</label>
-  			<textarea type="text" class="form-control" rows="30" readonly>${board.bd_content}</textarea>
+  			<textarea class="form-control" rows="30" readonly>${board.bd_content}</textarea>
 		</div>
 		</c:if>
 		<c:if test="${board.bd_del == 'Y'}">

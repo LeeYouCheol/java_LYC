@@ -3,8 +3,8 @@
     pageEncoding="UTF-8"%>
 <div clss="container">
 	<h1>
-		Hello world!  
+		환영합니다!  
 	</h1>
-	<P> ${setHeader}. </P>
+	<P> ${user} </P>
 </div>
 

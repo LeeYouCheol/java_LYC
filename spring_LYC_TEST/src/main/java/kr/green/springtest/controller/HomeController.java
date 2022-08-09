@@ -19,7 +19,7 @@ public class HomeController {
 	@Autowired
 	MemberService memberService;
 	
-	//이메일 출력하는 메소드
+	/*이메일 출력하는 메소드
 	@RequestMapping(value= "/")
 	public ModelAndView openTilesView(ModelAndView mv) {
 		mv.setViewName("/main/home");
@@ -27,6 +27,7 @@ public class HomeController {
 		System.out.println(memberService.getEmail("a"));
 		return mv;
 	}
+	*/
 	//회원가입하는 메소드
 	@RequestMapping(value= "/signup", method=RequestMethod.GET)
 	public ModelAndView signupGet(ModelAndView mv) {
@@ -40,6 +41,25 @@ public class HomeController {
 		}else {
 			mv.setViewName("redirect:/signup");
 		}
+		return mv;
+	}
+	//로그인 메소드
+	@RequestMapping(value="/login", method=RequestMethod.GET)
+	public ModelAndView loginGet(ModelAndView mv) {
+		mv.setViewName("/main/login");
+		return mv;
+	}
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	public ModelAndView loginPost(ModelAndView mv, MemberVO member) {
+		MemberVO dbMember = memberService.login(member);
+		if(dbMember != null) {
+			mv.setViewName("redirect:/");
+			System.out.println("로그인 : " + dbMember);
+		}
+			else {
+				mv.addObject("redirect:/login");
+			}
+		mv.addObject("user", dbMember);
 		return mv;
 	}
 }

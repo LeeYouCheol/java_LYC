@@ -1,5 +1,7 @@
 package kr.green.springtest.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +21,12 @@ public class HomeController {
 	@Autowired
 	MemberService memberService;
 	
-	/*이메일 출력하는 메소드
-	@RequestMapping(value= "/")
-	public ModelAndView openTilesView(ModelAndView mv) {
-		mv.setViewName("/main/home");
-		mv.addObject("setHeader", "타일즈");
-		System.out.println(memberService.getEmail("a"));
-		return mv;
+	@RequestMapping(value="/")
+	public ModelAndView openTilesView(ModelAndView mv){
+	    mv.setViewName("/main/home");
+	    return mv;
 	}
-	*/
+	
 	//회원가입하는 메소드
 	@RequestMapping(value= "/signup", method=RequestMethod.GET)
 	public ModelAndView signupGet(ModelAndView mv) {
@@ -62,4 +61,12 @@ public class HomeController {
 		mv.addObject("user", dbMember);
 		return mv;
 	}
+	//로그아웃기능
+	@RequestMapping(value="/logout")
+	public ModelAndView logout(ModelAndView mv, HttpSession session) {
+		session.removeAttribute("user");
+		mv.setViewName("redirect:/");
+		return mv;
+	}
+	
 }

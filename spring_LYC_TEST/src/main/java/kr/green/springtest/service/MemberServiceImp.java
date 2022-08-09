@@ -10,12 +10,6 @@ import kr.green.springtest.vo.MemberVO;
 public class MemberServiceImp implements MemberService {
     @Autowired
     MemberDAO memberDao;
-    
-   /* @Override
-    public String getEmail(String id) {
-        return memberDao.getEmail(id);
-    }
-    */
 
 	@Override
 	public boolean signup(MemberVO member) {

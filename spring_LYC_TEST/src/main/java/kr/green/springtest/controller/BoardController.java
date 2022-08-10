@@ -79,4 +79,15 @@ public class BoardController {
 		mv.setViewName("redirect:/board/select/"+bd_num);
 		return mv;
 	}
+	//삭제기능
+	@RequestMapping(value="/board/delete/{bd_num}", method=RequestMethod.GET)
+	public ModelAndView boardDeleteGet(ModelAndView mv,
+			@PathVariable("bd_num")int bd_num, HttpSession session) {
+		//회원정보를 가져옴
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		//보드서비스에게 게시글번호와 유저정보를 주면서 삭제하라고 시킴
+		boardService.deleteBoard(bd_num, user);
+		mv.setViewName("redirect:/board/list");
+		return mv;
+	}
 }

@@ -37,6 +37,7 @@
 			</div>
 			<c:if test="${board.bd_me_id == user.me_id}">
 				<a href="<%=request.getContextPath()%>/board/update/${board.bd_num}" class="btn btn-outline-primary mb-3">수정</a>
+				<a href="<%=request.getContextPath()%>/board/delete/${board.bd_num}" class="btn btn-outline-secondary mb-3">삭제</a>
 			</c:if>
 		</c:if>
 		<c:if test="${board.bd_del == 'Y'}">

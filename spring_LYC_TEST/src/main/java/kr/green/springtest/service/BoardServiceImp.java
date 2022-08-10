@@ -81,8 +81,9 @@ public class BoardServiceImp implements BoardService{
 		//보드다오에게 게시글번호를 주면서 가져오라고 시킴
 		BoardVO dbBoard = boardDao.selectBoard(bd_num);
 		//가져온 게시글의 작성자와 회원 아이디가 다르면 종료
-		if(!user.getMe_id().equals(dbBoard.getBd_me_id()) && user.getMe_authority() != 10)
+		if(!user.getMe_id().equals(dbBoard.getBd_me_id()))
 			return;
+		if(dbBoard == null || !dbBoard.getBd_del().equals("N"))
 		dbBoard.setBd_del("Y");
 		boardDao.updateBoard(dbBoard);
 		return;

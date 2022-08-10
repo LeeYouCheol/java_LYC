@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 public class Criteria {
 	//현재 페이지
@@ -17,4 +16,8 @@ public class Criteria {
 		public int getPageStart() {
 			return (this.page -1) * perPageNum;
 		}
+public Criteria() {
+	page = 1;
+	perPageNum = 10;
+}
 }

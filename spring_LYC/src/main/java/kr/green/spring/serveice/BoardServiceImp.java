@@ -68,6 +68,7 @@ public class BoardServiceImp implements BoardService{
 			return;
 		
 		//작성자와 로그인한 회원이 다를경우
+		//게시글 번호에 맞는 게시글 정보를 가져옴
 		BoardVO dbBoard = boardDao.selectBoard(board.getBd_num());
 		if(!user.getMe_id().equals(dbBoard.getBd_me_id()))
 			return;

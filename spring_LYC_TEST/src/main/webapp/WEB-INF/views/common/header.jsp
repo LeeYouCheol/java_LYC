@@ -21,10 +21,10 @@
 		      		<li class="nav-item">
 		        		<a class="nav-link" href="<%=request.getContextPath()%>/logout">로그아웃</a>
 		      		</li>
-		      		<li class="nav-item">
+		      	</c:if>
+		      	<li class="nav-item">
 		        		<a class="nav-link" href="<%=request.getContextPath()%>/board/list">게시판</a>
-		      		</li>
-		      	</c:if>  
+		      	</li>  
 	    	</ul>
 		</div> 
 	</div> 

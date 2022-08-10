@@ -18,5 +18,12 @@
   	insert into board(bd_title, bd_content, bd_me_id, bd_ori_num, bd_depth)
 		select #{b.bd_title}, #{b.bd_content}, #{b.bd_me_id}, ifnull(max(bd_num),0) + 1, 1
 		from board;
-  </insert>
+</insert>
+<update id="updateBoard">
+	update board set
+	bd_title = #{b.bd_title},
+	bd_content = #{b.bd_content},
+	bd_up_date = now()
+		where bd_num = #{b.bd_num}
+</update>
 </mapper>

@@ -49,4 +49,27 @@ public class BoardServiceImp implements BoardService{
 		//다오에게 게시글 작성하라고 시킴
 		boardDao.insertBoard(board);
 	}
+
+	@Override
+	public void updateBoard(BoardVO board, MemberVO user) {
+		if(user == null || board == null)
+			return;
+		//게시글 번호에 맞는 게시글 정보(dbBoard)를 가져옴
+		//board에 게시글 번호가 있기때문에 board.getBd_num() 라고 적는다
+		BoardVO dbBoard = boardDao.selectBoard(board.getBd_num());
+		//게시글이 없거나 삭제된 게시글이면 종료
+		if(dbBoard == null || !dbBoard.getBd_del().equals("N"))
+			return;
+		//게시글의 작성자와 회원의 아이디가 같은지 확인하여 다르면 종료
+		if(!user.getMe_id().equals(dbBoard.getBd_me_id()))
+			return;
+		//제목에 공백만 있는경우
+		if(board.getBd_title().trim().length() == 0)
+			return;
+		//내용에 공백만 있는경우
+		if(board.getBd_content().trim().length() == 0)
+			return;
+		//다오에게 게시글 정보를 주면서 수정하라고 시킴
+		boardDao.updateBoard(board);
+	}
 }

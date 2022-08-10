@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container">
-	<form action="/springtest/login" class="mt-3" method="post">
+	<form action="/spring/login" class="mt-3" method="post">
 		<h1>로그인</h1>
 		<div class="form-group">
   			<input type="text" class="form-control" name="me_id" placeholder="아이디를입력하세요">

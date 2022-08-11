@@ -116,4 +116,11 @@ public class HomeController {
 	    map.put("name", "홍길동");
 	    return map;
 	}
+	//아이디 중복체크
+	@RequestMapping(value ="/id/check")
+	@ResponseBody
+	public boolean idCheck(@RequestBody MemberVO member){
+		System.out.println(member);
+	    return memberService.checkId(member);
+	}
 }

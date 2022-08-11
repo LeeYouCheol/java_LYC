@@ -67,4 +67,14 @@ public class MemberServiceImp implements MemberService{
 		//아이디는 있지만 비번이 다른경우
 		return null;
 	}
+
+	@Override
+	public boolean checkId(MemberVO member) {
+		if(member == null || member.getMe_id() == null)
+			return false;
+		MemberVO user = memberDao.selectMember(member.getMe_id());
+		if(user != null)
+			return false;
+		return true;
+	}
 }

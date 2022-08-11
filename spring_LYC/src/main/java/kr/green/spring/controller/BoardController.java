@@ -27,7 +27,7 @@ public class BoardController {
 	public ModelAndView boardListGet(ModelAndView mv, Criteria cri) {
 		//한페이지에 몇개를 나타낼것인지를 설정
 		cri.setPerPageNum(2);
-		int totalCount = boardService.getTotalCount();
+		int totalCount = boardService.getTotalCount(cri);
 		//등록된 게시글을 가져옴
 		ArrayList<BoardVO> list = boardService.getBoardList(cri);
 		PageMaker pm = new PageMaker(cri, 5, totalCount);

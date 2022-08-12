@@ -29,7 +29,7 @@ public class BoardController {
 		cri.setPerPageNum(2);
 		//보드서비스에게 게시글 리스트를 요청
 		ArrayList<BoardVO> list = boardService.getBoardList(cri);
-		int totalCount = boardService.getTotalCount();
+		int totalCount = boardService.getTotalCount(cri);
 		PageMaker pm = new PageMaker(totalCount, 5, cri);
 		System.out.println(pm);
 		mv.addObject("pm", pm);

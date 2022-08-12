@@ -1,6 +1,7 @@
 package kr.green.springtest.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import kr.green.springtest.dao.MemberDAO;
@@ -10,7 +11,10 @@ import kr.green.springtest.vo.MemberVO;
 public class MemberServiceImp implements MemberService {
     @Autowired
     MemberDAO memberDao;
-
+    
+    @Autowired
+    BCryptPasswordEncoder passwordEncoder;
+    
 	@Override
 	public boolean signup(MemberVO member) {
 		if(member == null)
@@ -21,6 +25,9 @@ public class MemberServiceImp implements MemberService {
 		
 		if(dbMember != null)
 			return false;
+		System.out.println(member);
+		String encPw = passwordEncoder.encode(member.getMe_pw());
+		member.setMe_pw(encPw);
 		
 		memberDao.insertMember(member);
 		return true;
@@ -33,13 +40,13 @@ public class MemberServiceImp implements MemberService {
 		return null;
 		
 		//다오에게 멤버중에서 로그인한 아이디와 일치하는걸 가져오라고함
-		MemberVO dbMember = memberDao.selectMember(member.getMe_id());
+		MemberVO user = memberDao.selectMember(member.getMe_id());
 		//비교해서, 없으면 null
-		if(dbMember == null)
+		if(user == null)
 			return null;
 		//멤버에 회원 정보가 있고 비밀번호가 같으면
-		if(dbMember.getMe_pw().equals(member.getMe_pw()))
-			return dbMember;
+		if(passwordEncoder.matches(member.getMe_pw(), user.getMe_pw()))
+			return user;
 		//둘다아니면 null
 		return null;
 	}

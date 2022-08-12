@@ -50,11 +50,10 @@ public class HomeController {
 		MemberVO dbMember = memberService.login(member);
 		if(dbMember != null) {
 			mv.setViewName("redirect:/");
-			System.out.println("로그인 : " + dbMember);
 		}
-			else {
-				mv.addObject("redirect:/login");
-			}
+		else {
+			mv.setViewName("redirect:/login");
+		}
 		mv.addObject("user", dbMember);
 		return mv;
 	}

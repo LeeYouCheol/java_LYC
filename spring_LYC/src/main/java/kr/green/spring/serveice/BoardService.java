@@ -25,4 +25,6 @@ public interface BoardService {
 
 	Object updateLikes(LikesVO likes);
 
+	LikesVO getLikes(BoardVO board, MemberVO user);
+
 }

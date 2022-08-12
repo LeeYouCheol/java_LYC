@@ -43,6 +43,19 @@
     	</c:forEach>
     </tbody>
   </table>
+  <ul class="pagination justify-content-center">
+  	<c:if test="${pm.prev}">
+    	<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/board/list?page=${pm.startPage-1}">이전</a></li>
+    </c:if>
+    <c:forEach begin="${pm.startPage }" end="${pm.endPage }" var="i">
+    	<li class="page-item <c:if test="${pm.cri.page == i}">active</c:if>">
+    		<a class="page-link" href="<%=request.getContextPath()%>/board/list?page=${i}">${i}</a>
+    	</li>
+    </c:forEach>
+    <c:if test="${pm.next}">
+    	<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/board/list?page=${pm.endPage+1}">다음</a></li>
+    </c:if>
+  </ul>
   <a href="<%=request.getContextPath()%>/board/insert" class="btn btn-outline-warning mb-3">글쓰기</a>
 </div>
 </body>

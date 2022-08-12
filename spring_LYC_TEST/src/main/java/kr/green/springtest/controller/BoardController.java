@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.green.springtest.pagination.Criteria;
+import kr.green.springtest.pagination.PageMaker;
 import kr.green.springtest.service.BoardService;
 import kr.green.springtest.vo.BoardVO;
 import kr.green.springtest.vo.MemberVO;
@@ -23,9 +25,14 @@ public class BoardController {
 	
 	//게시판 불러오기
 	@RequestMapping(value="/board/list", method=RequestMethod.GET)
-	public ModelAndView boardListGet(ModelAndView mv) {
+	public ModelAndView boardListGet(ModelAndView mv, Criteria cri) {
+		cri.setPerPageNum(2);
 		//보드서비스에게 게시글 리스트를 요청
-		ArrayList<BoardVO> list = boardService.getBoardList();
+		ArrayList<BoardVO> list = boardService.getBoardList(cri);
+		int totalCount = boardService.getTotalCount();
+		PageMaker pm = new PageMaker(totalCount, 5, cri);
+		System.out.println(pm);
+		mv.addObject("pm", pm);
 		//화면에 게시글 리시트를 전송
 		mv.addObject("list", list);
 		mv.setViewName("/board/list");

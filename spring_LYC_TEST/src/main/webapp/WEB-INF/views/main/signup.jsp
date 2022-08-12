@@ -25,7 +25,7 @@
 		</div>
 		<div class="form-group">
 			<label for="me_pw2">비밀번호확인:</label>
-  			<input type="password" class="form-control" id="me_pw2" name="me_pw">
+  			<input type="password" class="form-control" id="me_pw2" name="me_pw2">
 		</div>
 		<div class="form-group">
 				<label>성별:</label>

@@ -148,6 +148,12 @@
     		<artifactId>tiles-template</artifactId>
     		<version>${org.apache.tiles-version}</version>
 		</dependency>
+		<!-- lombok -->
+		<dependency>
+  			<groupId>org.projectlombok</groupId>
+  			<artifactId>lombok</artifactId>
+  			<version>1.18.24</version>
+		</dependency>
 		<!-- mybatis 의존성 추가 -->
 		<dependency>
     		<groupId>org.mybatis</groupId>

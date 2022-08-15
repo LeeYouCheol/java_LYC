@@ -3,8 +3,7 @@
     pageEncoding="UTF-8"%>
 <div style="height: 800px">
 	<h1>
-		Hello world!  
+		환영합니다. 
 	</h1>
-	<P> ${setHeader}. </P>
 </div>
 

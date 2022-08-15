@@ -1,5 +1,8 @@
 package kr.green.springpr.service;
 
+import kr.green.springpr.vo.MemberVO;
+
 public interface MemberService {
-    public String getEmail(String id);
+
+	public boolean signup(MemberVO member);
 }

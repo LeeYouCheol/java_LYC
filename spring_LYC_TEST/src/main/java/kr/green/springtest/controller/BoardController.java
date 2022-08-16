@@ -1,20 +1,23 @@
 package kr.green.springtest.controller;
 
 import java.util.ArrayList;
-
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.springtest.pagination.Criteria;
 import kr.green.springtest.pagination.PageMaker;
 import kr.green.springtest.service.BoardService;
 import kr.green.springtest.vo.BoardVO;
+import kr.green.springtest.vo.LikesVO;
 import kr.green.springtest.vo.MemberVO;
 
 @Controller
@@ -40,11 +43,18 @@ public class BoardController {
 	}
 	//게시글 클릭해서 상세보기
 	@RequestMapping(value="/board/select/{bd_num}", method=RequestMethod.GET)
-	public ModelAndView boardSelectGet(ModelAndView mv, @PathVariable("bd_num")int bd_num) {
+	public ModelAndView boardSelectGet(ModelAndView mv,
+			@PathVariable("bd_num")int bd_num, HttpSession session) {
 		//보드서비스에게 조회수 증가하라고 시킴
 		boardService.updateViews(bd_num);
 		//보드서비스에게 게시글을 가져오라고 시킨다.
 		BoardVO board = boardService.getBoard(bd_num);
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		LikesVO likes = boardService.getLikes(bd_num, user);
+		
+		mv.addObject("likes",likes);
 		mv.addObject("board", board);
 		mv.setViewName("/board/select");
 		return mv;
@@ -96,5 +106,16 @@ public class BoardController {
 		boardService.deleteBoard(bd_num, user);
 		mv.setViewName("redirect:/board/list");
 		return mv;
+	}
+	@RequestMapping(value="/check/likes")
+	@ResponseBody
+	public Map<Object,Object> checkLikes(@RequestBody LikesVO likes,
+			HttpSession session) {
+		HashMap<Object, Object> map = new HashMap<Object, Object>();
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		//state : 추천=1, 비추=-1, 추천취소=10, 비추천취소=-10
+		String state = boardService.getLikesState(likes, user);
+		map.put("state", state);
+		return map;
 	}
 }

@@ -19,6 +19,7 @@
 			<label for="me_id">아이디:</label>
   			<input type="text" class="form-control" id="me_id" name="me_id">
 		</div>
+		<button type="button" class="btn btn-outline-secondary col-12" id="idCheck">아이디 중복확인</button>
 		<div class="form-group">
 			<label for="me_pw">비밀번호:</label>
   			<input type="password" class="form-control" id="me_pw" name="me_pw">
@@ -51,7 +52,7 @@
 		<button class="btn btn-outline-success col-12 mb-5">회원가입</button>
 	</form>
 </div>
-<script>
+<script type="text/javascript">
 	$(function(){
 		$( "#me_birth" ).datepicker({
 		      changeMonth: true,
@@ -60,63 +61,45 @@
 		      yearRange: "1900:2022"
 		});
 	})
+	let idCheck = false;
 	$(function(){
-    	$("form").validate({
-        	rules: {
-            	me_id: {
-                	required : true,
-            	},
-            	me_pw: {
-                	required : true,
-            	},
-            	me_pw2: {
-                	required : true,
-                	equalTo : me_pw
-            	},
-            	me_gender: {
-                	required : true,
-            	},
-            	me_email: {
-            		required : true,
-            		email : true
-            	},
-            	me_birth: {
-                	required : true,
-            	},
-        	},
-        	//규칙체크 실패시 출력될 메시지
-        	messages : {
-            	me_id: {
-                	required : "필수로입력하세요"
-            	},
-            	me_pw: {
-                	required : "필수로입력하세요"
-            	},
-            	me_pw2: {
-                	required : "필수로입력하세요",
-                	equalTo : "비밀번호와 비밀번호확인이 일치하지 않습니다."
-            	},
-            	me_gender: {
-                	required : "필수로입력하세요"
-            	},
-            	me_email: {
-                	required : "필수로입력하세요",
-                	email : "이메일 형식에 맞지 않습니다"
-            	},
-            	me_birth: {
-            		required : "필수로입력하세요"
-            	}
-        	}
-    	});
+		$('#idCheck').click(function(){
+			let me_id = $('[name=me_id]').val();
+			if(me_id.trim().length == 0){
+				alert('아이디를 입력하세요.')
+				return;
+			}
+			let obj = {
+				me_id : me_id
+			}
+			$.ajax({
+			     async:false,
+			     type:'POST',
+			     data:JSON.stringify(obj),
+			     url: '<%=request.getContextPath()%>/id/check',
+			     dataType:"json",
+			     contentType:"application/json; charset=UTF-8",
+			     success : function(data){
+			    	 if(data.check){
+			    		 alert('가입 가능한 아이디입니다.');
+			    		 idCheck = true;
+			    	 }else{
+			    		 alert('이미 사용중인 아이디입니다.');
+			    	 }
+			     }
+			});
+		});
+		$('[name=meid]').change(function(){
+			idcheck = false;
+		})
+		$('form').submit(function(){
+			if(idCheck)
+				return true;
+				
+			alert('아이디 중복검사를 확인하세요.')
+			return false;
+		})
 	})
-	$.validator.addMethod(
-    	"regex",
-    	function(value, element, regexp) {
-        	var re = new RegExp(regexp);
-        	return this.optional(element) || re.test(value);
-    	},
-    	"Please check your input."
-	);
 </script>
 </body>
 </html>

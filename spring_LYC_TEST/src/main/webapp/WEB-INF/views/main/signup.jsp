@@ -89,7 +89,7 @@
 			     }
 			});
 		});
-		$('[name=meid]').change(function(){
+		$('[name=me_id]').change(function(){
 			idcheck = false;
 		})
 		$('form').submit(function(){

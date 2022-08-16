@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <div style="height: 800px">
 	<h1>
-		환영합니다. 
+		${user} 환영합니다. 
 	</h1>
 </div>
 

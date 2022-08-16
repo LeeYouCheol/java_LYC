@@ -36,5 +36,17 @@ public class HomeController {
     	}
     	return mv;
     }
-
+    //로그인 메소드
+    @RequestMapping(value="/login", method=RequestMethod.GET)
+    public ModelAndView loginGet(ModelAndView mv) {
+    	mv.setViewName("/main/login");
+    	return mv;
+    }
+    @RequestMapping(value="/login", method=RequestMethod.POST)
+    public ModelAndView loginPost(ModelAndView mv, MemberVO member) {
+    	MemberVO dbMember = memberService.login(member);
+    	System.out.println(member.getMe_id()+"가 로그인되었습니다.");
+    	mv.setViewName("redirect:/");
+    	return mv;
+    }
 }

@@ -24,7 +24,7 @@
 				<option value="bd_me_id">작성자</option>
 			</select>
 			<input type="text" class="form-control col-8" name="search" value="${pm.cri.search}">
-			<button class="btn btn-outline-primary col-2 btn-search" type="button">검색</button>
+			<button class="btn btn-outline-primary col-2 btn-search">검색</button>
 		</form>
 	</div>
 	<table class="table table-striped table-hover">
@@ -85,7 +85,7 @@ let criteria = {
 }
 	$(function(){
 		getBoardList(criteria)
-		$('form').click(function(){
+		$('form').submit(function(){
 			let search = $('[name=search]').val();
 			let searchType = $('[name=searchType]').val();
 			
@@ -93,6 +93,7 @@ let criteria = {
 			criteria.searchType = searchType;
 			
 			getBoardList(criteria);
+			return false;
 		})
 		$('.fa-sort-up, .fa-sort-down').click(function(e){
 			e.stopPropagation();
@@ -141,26 +142,25 @@ let criteria = {
 	      		`</tr>`;
 		    	}
 	      	$('tbody').html(str);
-	      	console.log(data);
 	      	let pm = data.pm;
 	      	let pmStr = ''
 	      	if(pm.prev){
 	      		pmStr +=
 	        	'<li class="page-item">' +
-	        		'<a class="page-link" href="javascript:0;" onclick="getBoardList({page : '+(pm.startPage-1)+'})">이전</a>' +
+	        		'<a class="page-link" href="javascript:0;" onclick="criteria.page='+(pm.startPage-1)+';getBoardList(criteria)">이전</a>' +
 	        	'</li>';
 	      	}
 	        for(let i = pm.startPage; i<=pm.endPage; i++){
 	        	let active = pm.cri.page == i ? 'active' : '';
 	        	pmStr+=
 	        	'<li class="page-item '+active+'">' +
-	        		'<a class="page-link" href="javascript:0;" onclick="getBoardList({page : '+i+'})">'+ i + '</a>' +
+	        		'<a class="page-link" href="javascript:0;" onclick="criteria.page='+(i)+';getBoardList(criteria)">'+ i + '</a>' +
 	        	'</li>';
 	        }
 	        if(pm.next){
 	        	pmStr +=
 	        	'<li class="page-item">' +
-	        		'<a class="page-link" href="javascript:0;" onclick="getBoardList({page : '+(pm.endPage+1)+'})">다음</a>' +
+	        		'<a class="page-link" href="javascript:0;" onclick=""criteria.page='+(pm.endPage+1)+';getBoardList(criteria)"">다음</a>' +
 	        	'</li>';
 	        }
 	        $('.pagination').html(pmStr);

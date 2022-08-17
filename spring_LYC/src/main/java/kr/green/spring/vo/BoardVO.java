@@ -21,11 +21,11 @@ public class BoardVO {
 	private char bd_del;
 	
 	public String getBd_reg_date_str() {
-		SimpleDateFormat format = new SimpleDateFormat("yyy-MM-dd");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		return format.format(bd_reg_date);
 	}
 	public String getBd_reg_date_time_str() {
-		SimpleDateFormat format = new SimpleDateFormat("yyy-MM-dd hh:mm:ss");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		return format.format(bd_reg_date);
 	}
 }

@@ -30,6 +30,19 @@
 			<div class="form-group">
   				<textarea class="form-control" rows="20" name="bd_content" readonly>${board.bd_content }</textarea>
 			</div>
+			<div class="list-comment">
+				<div class="item-comment">
+					<div class="co_me_id">작성자</div>
+					<div class="co_reg_date">작성일</div>
+					<div class="co_content">내용</div>
+					<input value="1">
+				</div>
+			</div>
+			<ul class="pagination justify-content-center"></ul>
+			<div class="form-group mt-3">
+				<textarea class="form-control" name="co_content"></textarea>
+				<button class="btn btn-outline-primary col-12 btn-comment-insert">댓글등록</button>
+			</div>
 			<c:if test="${user != null && user.me_id == board.bd_me_id }">
 				<a href="<%=request.getContextPath()%>/board/update/${board.bd_num}" class="btn btn-outline-danger mb-3">수정</a>
 				<a href="<%=request.getContextPath()%>/board/delete/${board.bd_num}" class="btn btn-outline-danger mb-3">삭제</a>
@@ -45,8 +58,14 @@
 			<h1>잘못된 경로로 접근했습니다.</h1>
 		</c:if>
 	</div>
-	<script>
-		$(function(){
+<script>
+let criteria = {
+	page : 1,
+	perPageNum : 5,
+	orderBy : 'desc'
+	}
+	let bd_num = '${board.bd_num}'
+	$(function(){
 			$('.btn-like').click(function(){
 				let li_state = $(this).hasClass('up') ? 1 : -1;
 				let obj = {
@@ -86,6 +105,76 @@
 				});
 			})
 		})
-	</script>
+		//댓글 ajax
+		$(function(){
+			$('.btn-comment-insert').click(function(){
+				let co_content = $('[name=co_content]').val();
+				let co_bd_num = '${board.bd_num}';
+				let obj = {
+					co_content : co_content,
+					co_bd_num : co_bd_num
+				}
+				$.ajax({
+					async:true,
+					type:'POST',
+					data:JSON.stringify(obj),
+					url: '<%=request.getContextPath()%>/ajax/comment/insert',
+					dataType:"json",
+					contentType:"application/json; charset=UTF-8",
+					success : function(data){
+						alert(data.res);
+						getCommentList(criteria, bd_num);
+					}
+				});
+			})
+		})
+		
+		function getCommentList(cri, bd_num){
+			$.ajax({
+				async:true,
+				type:'POST',
+				data:JSON.stringify(cri),
+				url: '<%=request.getContextPath()%>/ajax/comment/list/'+bd_num,
+				dataType:"json",
+				contentType:"application/json; charset=UTF-8",
+				success : function(data){
+					let str = '';
+					for(co of data.list){
+					str +=
+					'<div class="item-comment">' +
+						'<div class="co_me_id"><b>'+co.co_me_id+'</b></div>' +
+						'<div class="co_content" style="font-size : 20px">'+co.co_content+'</div>' +
+						'<div class="co_reg_date" style="font-size : 10px">'+co.co_reg_date_str+'</div>' +
+						'<input value="'+co.co_num+'" name="co_num" type="hidden">' +
+					'</div>'
+					}
+					$('.list-comment').html(str);
+					let pm = data.pm;
+			      	let pmStr = ''
+			      	if(pm.prev){
+			      		pmStr +=
+			        	'<li class="page-item">' +
+			        		'<a class="page-link" href="javascript:0;" onclick="criteria.page='+(pm.startPage-1)+';getCommentList(criteria, bd_num)">이전</a>' +
+			        	'</li>';
+			      	}
+			        for(let i = pm.startPage; i<=pm.endPage; i++){
+			        	let active = pm.cri.page == i ? 'active' : '';
+			        	pmStr+=
+			        	'<li class="page-item '+active+'">' +
+			        		'<a class="page-link" href="javascript:0;" onclick="criteria.page='+(i)+';getCommentList(criteria, bd_num)">'+ i + '</a>' +
+			        	'</li>';
+			        }
+			        if(pm.next){
+			        	pmStr +=
+			        	'<li class="page-item">' +
+			        		'<a class="page-link" href="javascript:0;" onclick=""criteria.page='+(pm.endPage+1)+';getCommentList(criteria, bd_num)"">다음</a>' +
+			        	'</li>';
+			        }
+			        $('.pagination').html(pmStr);
+				}
+			});
+		}
+		getCommentList(criteria, bd_num)
+</script>
 </body>
 </html>

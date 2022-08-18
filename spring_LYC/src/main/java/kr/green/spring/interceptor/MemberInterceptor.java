@@ -16,13 +16,7 @@ public class MemberInterceptor extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession();
 		Object user = session.getAttribute("user");
 		if(user == null) {
-			response.sendRedirect(request.getContextPath()+"/");
-			return false;
-		}
-		String redirectURL = (String)session.getAttribute("redirectURL");
-		if(user != null && redirectURL != null) {
-			response.sendRedirect(redirectURL);
-			session.removeAttribute("redirectURL");
+			response.sendRedirect(request.getContextPath()+"/login");
 			return false;
 		}
 		return true;

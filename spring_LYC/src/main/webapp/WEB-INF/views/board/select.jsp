@@ -47,6 +47,9 @@
 				<a href="<%=request.getContextPath()%>/board/update/${board.bd_num}" class="btn btn-outline-danger mb-3">수정</a>
 				<a href="<%=request.getContextPath()%>/board/delete/${board.bd_num}" class="btn btn-outline-danger mb-3">삭제</a>
 			</c:if>
+			<c:if test="${user.me_id != board.bd_me_id }">
+				<a href="<%=request.getContextPath()%>/board/insert?bd_ori_num=${board.bd_ori_num}&bd_depth=${board.bd_depth}" class="btn btn-outline-danger mb-3">답글</a>
+			</c:if>
 		</c:if>
 		<c:if test="${board != null && 'A'.charAt(0) == board.bd_del}">
 			<h1>관리자에 의해 삭제된 게시글입니다.</h1>
@@ -66,42 +69,42 @@ let criteria = {
 	}
 	let bd_num = '${board.bd_num}'
 	$(function(){
-			$('.btn-like').click(function(){
-				let li_state = $(this).hasClass('up') ? 1 : -1;
-				let obj = {
-					li_bd_num : '${board.bd_num}',
-					li_state : li_state,
-					li_me_id : '${user.me_id}'
+		$('.btn-like').click(function(){
+			let li_state = $(this).hasClass('up') ? 1 : -1;
+			let obj = {
+				li_bd_num : '${board.bd_num}',
+				li_state : li_state,
+				li_me_id : '${user.me_id}'
+			}
+			if(obj.li_me_id == ''){
+				if(confirm('추천/비추천은 로그인을 해야 합니다. 로그인을 하시겠습니까?')){
+					location.href='<%=request.getContextPath()%>/login'
 				}
-				if(obj.li_me_id == ''){
-					if(confirm('추천/비추천은 로그인을 해야 합니다. 로그인을 하시겠습니까?')){
-						location.href='<%=request.getContextPath()%>/login'
-					}
-					else
-						return;
-				}
-				$.ajax({
-				     async:false,
-				     type:'POST',
-				     data:JSON.stringify(obj),
-				     url: '<%=request.getContextPath()%>/board/likes',
-				     contentType:"application/json; charset=UTF-8",
-				     success : function(data){
-				    	$('.btn-like.up').removeClass('btn-primary').addClass('btn-outline-primary');
-				    	$('.btn-like.down').removeClass('btn-danger').addClass('btn-outline-danger');
-				    	if(data == '1'){
-				    		 alert('해당 게시글을 추천했습니다.')
-				    		 $('.btn-like.up').addClass('btn-primary').removeClass('btn-outline-primary');
-				    	}else if(data == '-1'){
-				    		alert('해당 게시글을 비추천했습니다.')
-				    		$('.btn-like.down').addClass('btn-danger').removeClass('btn-outline-danger');
-				    	}else if(data == '10'){
-				    		alert('해당 게시글추천을 취소했습니다.')
-				    	}else if(data == '-1'){
-				    		alert('해당 게시글 비추천을 취소했습니다.')
-				    	}else
-				    		alert('잘못된 접근입니다.')
-				     }
+				else
+					return;
+			}
+			$.ajax({
+				   async:false,
+				   type:'POST',
+				   data:JSON.stringify(obj),
+				   url: '<%=request.getContextPath()%>/board/likes',
+				   contentType:"application/json; charset=UTF-8",
+				   success : function(data){
+				    $('.btn-like.up').removeClass('btn-primary').addClass('btn-outline-primary');
+				    $('.btn-like.down').removeClass('btn-danger').addClass('btn-outline-danger');
+				    if(data == '1'){
+				    	alert('해당 게시글을 추천했습니다.')
+				    	$('.btn-like.up').addClass('btn-primary').removeClass('btn-outline-primary');
+				    }else if(data == '-1'){
+				    	alert('해당 게시글을 비추천했습니다.')
+				    	$('.btn-like.down').addClass('btn-danger').removeClass('btn-outline-danger');
+				    }else if(data == '10'){
+				    	alert('해당 게시글추천을 취소했습니다.')
+				    }else if(data == '-1'){
+				    	alert('해당 게시글 비추천을 취소했습니다.')
+				    }else
+				    	alert('잘못된 접근입니다.')
+				    }
 				});
 			})
 		})
@@ -209,6 +212,14 @@ let criteria = {
 				$('.btn-comment-update-cancel').remove();
 				$('.btn-comment-update-complete').remove();
 			})
+			//답글버튼 클릭
+			$(document).on('click', '.btn-comment-reply', function(){
+				let str = '<br><textarea class="co_content_reply"></textarea><br>';
+				str += '<button class="btn-insert-reply">답글 등록</button>'
+					str += '<button class="btn-insert-reply">답글 취소</button>'
+				$(this).after(str);
+				$(this).hide();
+			})
 		})
 
 		
@@ -237,6 +248,7 @@ let criteria = {
 							'<button class="btn-comment-update">수정</button>';
 						}
 					str +=
+						'<button class="btn-comment-reply">답글</button>'
 					'</div>'
 					}
 					$('.list-comment').html(str);

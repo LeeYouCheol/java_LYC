@@ -74,4 +74,10 @@
 	<select id="selectTotalCountComment" resultType="int">
 		select count(*) from comments where co_bd_num = #{co_bd_num} order by co_num desc
 	</select>
+	<select id="selectComment" resultType="kr.green.spring.vo.CommentVO">
+		select * from comments where co_num = #{co_num}
+	</select>
+	<select id="deleteComment">
+		delete from comments where co_num = #{co_num}
+	</select>
 </mapper>

@@ -128,7 +128,30 @@ let criteria = {
 				});
 			})
 		})
-		
+		$(function(){
+			$(document).on('click', '.btn-comment-delete',function(){
+				let co_num = $(this).siblings('[name=co_num]').val();
+				let obj = {
+						co_num : co_num
+				}
+				$.ajax({
+					async:true,
+					type:'POST',
+					data:JSON.stringify(obj),
+					url: '<%=request.getContextPath()%>/ajax/comment/delete',
+					dataType:"json",
+					contentType:"application/json; charset=UTF-8",
+					success : function(data){
+						if(data.res){
+							alert('삭제했습니다.');
+							getCommentList(criteria, bd_num);
+						}else{
+							alert('삭제에 실패했습니다');
+						}
+					}
+				})
+			})
+		})
 		function getCommentList(cri, bd_num){
 			$.ajax({
 				async:true,
@@ -145,7 +168,11 @@ let criteria = {
 						'<div class="co_me_id"><b>'+co.co_me_id+'</b></div>' +
 						'<div class="co_content" style="font-size : 20px">'+co.co_content+'</div>' +
 						'<div class="co_reg_date" style="font-size : 10px">'+co.co_reg_date_str+'</div>' +
-						'<input value="'+co.co_num+'" name="co_num" type="hidden">' +
+						'<input value="'+co.co_num+'" name="co_num" type="hidden">';
+						if(co.co_me_id == '${user.me_id}'){
+							str +=
+							'<button class="btn-comment-delete">삭제</button>';	
+						}
 					'</div>'
 					}
 					$('.list-comment').html(str);

@@ -73,7 +73,7 @@ let criteria = {
 					li_state : li_state,
 					li_me_id : '${user.me_id}'
 				}
-				if(obj.le_me_id == ''){
+				if(obj.li_me_id == ''){
 					if(confirm('추천/비추천은 로그인을 해야 합니다. 로그인을 하시겠습니까?')){
 						location.href='<%=request.getContextPath()%>/login'
 					}

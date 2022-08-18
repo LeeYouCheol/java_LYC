@@ -6,19 +6,15 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-public class MemberInterceptor extends HandlerInterceptorAdapter {
+public class RedirectInterceptor extends HandlerInterceptorAdapter {
 	
 	@Override
-	public boolean preHandle(HttpServletRequest request, 
-			HttpServletResponse response, 
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, 
 			Object handler)
 			throws Exception {
 		HttpSession session = request.getSession();
 		Object user = session.getAttribute("user");
-		if(user == null) {
-			response.sendRedirect(request.getContextPath()+"/");
-			return false;
-		}
+		
 		String redirectURL = (String)session.getAttribute("redirectURL");
 		if(user != null && redirectURL != null) {
 			response.sendRedirect(redirectURL);

@@ -80,4 +80,7 @@
 	<select id="deleteComment">
 		delete from comments where co_num = #{co_num}
 	</select>
+	<update id="updateComment">
+		update comments set co_content = #{co.co_content} where co_num = #{co.co_num}
+	</update>
 </mapper>

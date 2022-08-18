@@ -192,9 +192,26 @@ public class BoardServiceImp implements BoardService{
 		System.out.println(dbComment);
 		if(dbComment == null || !dbComment.getCo_me_id().equals(user.getMe_id()))
 			return false;
+		
 		boardDao.deleteComment(comment.getCo_num());
+		
 		return true;
 		
 		
+	}
+
+	@Override
+	public boolean updateComment(CommentVO comment, MemberVO user) {
+		if(comment == null || user == null)
+			return false;
+		//로그인한 사용자가 작성한 댓글인지 아닌지 확인하는 작업
+		CommentVO dbComment = boardDao.selectComment(comment.getCo_num());
+		System.out.println(dbComment);
+		if(dbComment == null || !dbComment.getCo_me_id().equals(user.getMe_id()))
+			return false;
+		
+		boardDao.updateComment(comment);
+		
+		return true;
 	}
 }

@@ -82,6 +82,10 @@ public class BoardController {
 	public ModelAndView boardUpdateGet(ModelAndView mv, @PathVariable("bd_num")Integer bd_num) {
 		//게시글 번호에 맞는 게시글 정보를 가져옴
 		BoardVO board = boardService.getBoard(bd_num);
+		//첨부파일들을 가져옴
+		ArrayList<FileVO> fileList = boardService.getFileList(bd_num);
+		//가져온 첨부파일을 화면에 전달
+		mv.addObject("fileList",fileList);
 		//가져온 게시글을 화면에 전달
 		mv.addObject("board", board);
 		mv.setViewName("/board/update");
@@ -89,15 +93,13 @@ public class BoardController {
 	}
 	@RequestMapping(value= "/board/update/{bd_num}", method=RequestMethod.POST)
 	public ModelAndView boardUpdatePost(ModelAndView mv,
-			@PathVariable("bd_num")Integer bd_num, HttpSession session, BoardVO board) {
-		//수정한 게시글 정보를 확인
-		//System.out.println(board);
+			@PathVariable("bd_num")Integer bd_num, HttpSession session, BoardVO board,
+			MultipartFile [] files, int []delFiles) {
 		//로그인한 회원 정보를 확인
 		MemberVO user = (MemberVO) session.getAttribute("user");
-		//System.out.println(user);
 		//게시글 수정 요청
 		board.setBd_num(bd_num);
-		boardService.updateBoard(board,user);
+		boardService.updateBoard(board,user,files,delFiles);
 		mv.setViewName("redirect:/board/select/"+bd_num);
 		return mv;
 	}

@@ -128,4 +128,21 @@ public class HomeController {
 		System.out.println(member);
 	    return memberService.checkId(member);
 	}
+	//아이디찾기
+	@RequestMapping(value= "/find", method=RequestMethod.GET)
+	public ModelAndView logoutGet(ModelAndView mv, String type) {
+		
+		mv.addObject("type", type);
+		mv.setViewName("/main/find");
+		return mv;
+	}
+	//아이디 찾기
+	@RequestMapping(value ="/find/id")
+	@ResponseBody
+	public Map<Object, Object> findId(@RequestBody MemberVO member){
+		HashMap<Object, Object> map = new HashMap<Object, Object>();
+		ArrayList<String> idList = memberService.getIdList(member);
+		map.put("idList", idList);
+	    return map;
+	}
 }

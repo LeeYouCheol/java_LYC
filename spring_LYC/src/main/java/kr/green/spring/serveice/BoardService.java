@@ -2,6 +2,8 @@ package kr.green.spring.serveice;
 
 import java.util.ArrayList;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import kr.green.spring.pagination.Criteria;
 import kr.green.spring.vo.BoardVO;
 import kr.green.spring.vo.CommentVO;
@@ -10,7 +12,7 @@ import kr.green.spring.vo.MemberVO;
 
 public interface BoardService {
 
-	void isertBoard(BoardVO board, MemberVO user);
+	void isertBoard(BoardVO board, MemberVO user, MultipartFile[] files);
 
 	ArrayList<BoardVO> getBoardList(Criteria cri);
 

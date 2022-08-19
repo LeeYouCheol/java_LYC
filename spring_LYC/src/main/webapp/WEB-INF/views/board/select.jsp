@@ -206,7 +206,6 @@ let criteria = {
 		})
 			//수정버튼 클릭후 생기는 취소버튼 클릭
 			$(document).on('click', '.btn-comment-update-cancel', function(){
-				
 				//기존댓글 내용이 입력창으로 바뀌어야함
 				$(this).siblings('.co_content').show();
 				$(this).siblings('.co_content2').remove();

@@ -12,7 +12,7 @@ public class MemberServiceImp implements MemberService{
 
 	@Autowired
 	MemberDAO memberDao;
-
+	
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
 	

@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <div clss="container">
 	<h1>
-		환영합니다!  
+		복습 프로젝트 입니다.  
 	</h1>
 	<P>  </P>
 </div>

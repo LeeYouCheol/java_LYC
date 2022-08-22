@@ -17,6 +17,7 @@ import kr.green.springtest.pagination.Criteria;
 import kr.green.springtest.pagination.PageMaker;
 import kr.green.springtest.service.BoardService;
 import kr.green.springtest.vo.BoardVO;
+import kr.green.springtest.vo.CommentVO;
 import kr.green.springtest.vo.LikesVO;
 import kr.green.springtest.vo.MemberVO;
 
@@ -116,6 +117,16 @@ public class BoardController {
 		//state : 추천=1, 비추=-1, 추천취소=10, 비추천취소=-10
 		String state = boardService.getLikesState(likes, user);
 		map.put("state", state);
+		return map;
+	}
+	@RequestMapping(value="/ajax/comment/insert")
+	@ResponseBody
+	public Map<Object,Object> ajaxCommentInsert(@RequestBody CommentVO comment,
+			HttpSession session) {
+		HashMap<Object, Object> map = new HashMap<Object, Object>();
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		boolean res = boardService.insertComment(comment,user);
+		map.put("res", res);
 		return map;
 	}
 }

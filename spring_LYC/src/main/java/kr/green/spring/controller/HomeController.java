@@ -50,7 +50,7 @@ public class HomeController {
 	 * */
 	//메인화면이다
 	@RequestMapping(value= "/", method=RequestMethod.GET)
-	public ModelAndView home(ModelAndView mv) throws Exception{
+	public ModelAndView home(ModelAndView mv) {
 		mv.setViewName("/main/home");
 		return mv;
 	}
@@ -143,6 +143,22 @@ public class HomeController {
 		HashMap<Object, Object> map = new HashMap<Object, Object>();
 		ArrayList<String> idList = memberService.getIdList(member);
 		map.put("idList", idList);
+	    return map;
+	}
+	@RequestMapping(value ="/find/pw")
+	@ResponseBody
+	public Map<Object, Object> findPw(@RequestBody MemberVO member){
+		HashMap<Object, Object> map = new HashMap<Object, Object>();
+		//memberService.sendEmail("제목", "내용", "hosw33@naver.com");
+		boolean res = false;
+		boolean exception = false;
+		try {
+			res = memberService.findpw(member);
+		}catch(Exception e) {
+			exception = true;
+		}
+		map.put("res", res);
+		map.put("exception", exception);
 	    return map;
 	}
 }

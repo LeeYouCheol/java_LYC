@@ -12,5 +12,7 @@ public interface MemberDAO {
 	//m은 member를 줄인것
 	void insertMember(@Param("m")MemberVO member);
 	ArrayList<String> selectIdList(@Param("m")MemberVO member);
+	MemberVO selectMemberByEmailBirth(@Param("m")MemberVO member);
+	void updateMember(@Param("m")MemberVO dbMember);
 
 }

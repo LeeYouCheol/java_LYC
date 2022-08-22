@@ -3,7 +3,6 @@ package kr.green.spring.serveice;
 import java.util.ArrayList;
 
 import javax.mail.internet.MimeMessage;
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -151,5 +150,26 @@ public class MemberServiceImp implements MemberService{
 		dbMember.setMe_pw(encPw);
 		memberDao.updateMember(dbMember);
 		return true;
+	}
+
+	@Override
+	public void updateMember(MemberVO member, MemberVO user) {
+		if(member == null || user == null || member.getMe_id() == null)
+			return;
+		//화면에서 보낸 아이디와 로그인한 아이디가 다르면 수정 안함
+		if(!member.getMe_id().equals(user.getMe_id()))
+			return;
+		user.setMe_birth(member.getMe_birth());
+		user.setMe_gender(member.getMe_gender());
+		user.setMe_email(member.getMe_email());
+		
+		if(member.getMe_authority() != 0)
+			user.setMe_authority(member.getMe_authority());
+		//비밀번호가 있으면 암호화하여 저장
+		if(member.getMe_pw() != null || member.getMe_pw().length() != 0) {
+			String encPw = passwordEncoder.encode(member.getMe_pw());
+			user.setMe_pw(encPw);
+		}
+		memberDao.updateMember(user);
 	}
 }

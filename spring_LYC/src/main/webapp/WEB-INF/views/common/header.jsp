@@ -18,6 +18,9 @@
 		      		</li>
 		      	</c:if>
 		      	<c:if test="${user != null}">
+		      	<li class="nav-item">
+		        		<a class="nav-link" href="<%=request.getContextPath() %>/user/update">회원정보 수정</a>
+		      		</li>
 		      		<li class="nav-item">
 		        		<a class="nav-link" href="<%=request.getContextPath() %>/logout">로그아웃</a>
 		      		</li>

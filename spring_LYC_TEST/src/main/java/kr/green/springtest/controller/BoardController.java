@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.springtest.pagination.Criteria;
@@ -67,11 +68,12 @@ public class BoardController {
 		return mv;
 	}
 	@RequestMapping(value="/board/insert", method=RequestMethod.POST)
-	public ModelAndView boardInsertPost(ModelAndView mv, BoardVO board, HttpSession session) {
+	public ModelAndView boardInsertPost(ModelAndView mv, BoardVO board,
+			HttpSession session, MultipartFile[] files) {
 		//로그인한 회원 정보를 확인
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		//보드서비스에게 게시물과 아이디를 주고 일을 시킴
-		boardService.insertBoard(board,user);
+		boardService.insertBoard(board,user,files);
 		mv.setViewName("redirect:/board/list");
 		return mv;
 	}

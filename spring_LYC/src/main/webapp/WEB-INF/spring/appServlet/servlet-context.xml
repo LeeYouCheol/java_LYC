@@ -73,9 +73,6 @@
 	</beans:bean>
 	<!-- servlet-context.xml에 추가 -->
 	<beans:bean id="uploadPath" class="java.lang.String">
-    <!--
-	<beans:constructor-arg value="서버에 저장할 경로"></beans:constructor-arg>
-	-->
     <beans:constructor-arg value="C:\\Users\\LYC\\OneDrive\\바탕 화면\\숙제\\java_LYC\\uploadfiles"></beans:constructor-arg>
 </beans:bean>
 	

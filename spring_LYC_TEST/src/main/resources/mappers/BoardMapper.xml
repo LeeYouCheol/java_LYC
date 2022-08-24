@@ -75,4 +75,13 @@
 	<select id="selectCommentTotalCount" resultType="int">
 		select count(*) from comments where co_bd_num = #{bd_num}
 	</select>
+	<select id="selectComment" resultType="kr.green.springtest.vo.CommentVO">
+		select * from comments where co_num = #{co_num}
+	</select>
+	<delete id="deleteComment">
+		delete from comments where co_num = #{co_num}
+	</delete>
+	<update id="updateComment">
+		update comments set co_content = #{co.co_content} where co_num = #{co.co_num}
+	</update>
 </mapper>

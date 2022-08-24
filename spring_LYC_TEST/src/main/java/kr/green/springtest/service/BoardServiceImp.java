@@ -167,4 +167,29 @@ public class BoardServiceImp implements BoardService{
 			return 0;
 		return boardDao.selectCommentTotalCount(bd_num);
 	}
+
+	@Override
+	public boolean deleteComment(CommentVO comment, MemberVO user) {
+		if(comment == null || user == null)
+			return false;
+		//다오에게 댓글정보에서 댓글번호와 일치하는 댓을글을 가져오라고 시킴
+		CommentVO dbComment = boardDao.selectComment(comment.getCo_num());
+		if(dbComment == null || !dbComment.getCo_me_id().equals(user.getMe_id()))
+			return false;
+		//다오에게 댓글을 업데이트하라고 시킴
+		boardDao.deleteComment(comment.getCo_num());
+		return true;
+	}
+
+	@Override
+	public boolean updateComment(CommentVO comment, MemberVO user) {
+		if(comment == null || user == null)
+			return false;
+		
+		CommentVO dbComment = boardDao.selectComment(comment.getCo_num());
+		if(dbComment == null || !dbComment.getCo_me_id().equals(user.getMe_id()))
+			return false;
+		boardDao.updateComment(comment);
+		return true;
+	}
 }

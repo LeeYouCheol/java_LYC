@@ -53,6 +53,12 @@
 				<a href="<%=request.getContextPath()%>/board/update/${board.bd_num}" class="btn btn-outline-primary mb-3">수정</a>
 				<a href="<%=request.getContextPath()%>/board/delete/${board.bd_num}" class="btn btn-outline-secondary mb-3">삭제</a>
 			</c:if>
+			<div class="form-group">
+  				<label for="">첨부파일:</label>
+  				<c:forEach items="${fileList}" var="fi">
+  					<a href="<c:url value="/file${fi.fi_name}"></c:url>" class="form-control" download="${fi.fi_ori_name}">${fi.fi_ori_name}</a>
+  				</c:forEach>
+			</div>
 			<hr>
 			<div class="list-comment">
 				<div class="media border p-3">
@@ -256,7 +262,7 @@ function commentListSuccess(data){
 		let content = contentEl.text();
 		let str = '';
 		str += '<div class="form-group box-content">'
-		str +=		'<textarea class="form-controll" rows="3">'+content+'</textarea>'
+		str +=		'<textarea class="form-control" rows="3">'+content+'</textarea>'
 		str += '</div>'
 		contentEl.after(str);
 		$(this).parent().hide();

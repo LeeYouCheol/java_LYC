@@ -19,6 +19,7 @@ import kr.green.springtest.pagination.PageMaker;
 import kr.green.springtest.service.BoardService;
 import kr.green.springtest.vo.BoardVO;
 import kr.green.springtest.vo.CommentVO;
+import kr.green.springtest.vo.FileVO;
 import kr.green.springtest.vo.LikesVO;
 import kr.green.springtest.vo.MemberVO;
 
@@ -49,13 +50,17 @@ public class BoardController {
 			@PathVariable("bd_num")int bd_num, HttpSession session) {
 		//보드서비스에게 조회수 증가하라고 시킴
 		boardService.updateViews(bd_num);
-		//보드서비스에게 게시글을 가져오라고 시킨다.
+		//보드서비스에게 게시글 번호를 주면서 게시글을 가져오라고 시킨다.
 		BoardVO board = boardService.getBoard(bd_num);
 		
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		
 		LikesVO likes = boardService.getLikes(bd_num, user);
 		
+		//첨부파일
+		//
+		ArrayList<FileVO> fileList = boardService.getFileList(bd_num);
+		mv.addObject("fileList",fileList);
 		mv.addObject("likes",likes);
 		mv.addObject("board", board);
 		mv.setViewName("/board/select");

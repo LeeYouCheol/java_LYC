@@ -18,9 +18,9 @@
 			</div>
     		<div class="form-group">
         		<label>첨부파일(최대 3개):</label>
-       			<input type="file" class="form-control" name="file"/>
-       			<input type="file" class="form-control" name="file"/>
-       			<input type="file" class="form-control" name="file"/>
+       			<input type="file" class="form-control" name="files"/>
+       			<input type="file" class="form-control" name="files"/>
+       			<input type="file" class="form-control" name="files"/>
     		</div>
 			<button class="btn btn-outline-primary col-12 mb-3">게시글 등록</button>
 		</form>

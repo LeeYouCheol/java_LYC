@@ -59,22 +59,12 @@ public class BoardServiceImp implements BoardService{
 			return;
 		}
 		for(MultipartFile tmp : files) {
-			String fi_ori_name = tmp.getOriginalFilename();
-			if(tmp == null || fi_ori_name == null || fi_ori_name.length() == 0)
-				continue;
-			try {
-			String fi_name = UploadFileUtils.uploadFile(uploadPath, fi_ori_name, tmp.getBytes());
-			
-			FileVO file = new FileVO(fi_name, fi_ori_name, board.getBd_num());
-			boardDao.insertFile(file);
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
+			insertFile(tmp, board.getBd_num());
 		}
 	}
 
 	@Override
-	public void updateBoard(BoardVO board, MemberVO user) {
+	public void updateBoard(BoardVO board, MemberVO user, MultipartFile[] files, int[] nums) {
 		if(user == null || board == null)
 			return;
 		//게시글 번호에 맞는 게시글 정보(dbBoard)를 가져옴
@@ -94,6 +84,19 @@ public class BoardServiceImp implements BoardService{
 			return;
 		//다오에게 게시글 정보를 주면서 수정하라고 시킴
 		boardDao.updateBoard(board);
+		
+		if(files != null && files.length != 0) {
+			for(MultipartFile tmp : files) {
+				insertFile(tmp, board.getBd_num());
+			}
+		}
+		
+		if(nums == null || nums.length == 0)
+			return;
+		for(int fi_num : nums) {
+			FileVO file = boardDao.selectFile(fi_num);
+			deleteFile(file);
+		}
 	}
 
 	@Override
@@ -107,9 +110,18 @@ public class BoardServiceImp implements BoardService{
 		if(!user.getMe_id().equals(dbBoard.getBd_me_id()))
 			return;
 		if(dbBoard == null || !dbBoard.getBd_del().equals("N"))
+			return;
 		dbBoard.setBd_del("Y");
 		boardDao.updateBoard(dbBoard);
-		return;
+		
+		//다오에게 게시글 번호에 맞는 첨부파일들을 가져오라고 시킴
+		ArrayList<FileVO> fileList = boardDao.selectFileList(bd_num);
+		//null체크, 첨부파일이 없으면 종료
+		if(fileList == null || fileList.size() == 0)
+			return;
+		for(FileVO tmp : fileList) {
+			deleteFile(tmp);
+		}
 	}
 
 	@Override
@@ -216,5 +228,24 @@ public class BoardServiceImp implements BoardService{
 	@Override
 	public ArrayList<FileVO> getFileList(int bd_num) {
 		return boardDao.selectFileList(bd_num);
+	}
+	//첨부파일 넣기
+	private void insertFile(MultipartFile tmp, int bd_num) {
+		String fi_ori_name = tmp.getOriginalFilename();
+		if(tmp == null || fi_ori_name == null || fi_ori_name.length() == 0)
+			return;
+		try {
+			String fi_name = UploadFileUtils.uploadFile(uploadPath, fi_ori_name, tmp.getBytes());
+		
+			FileVO file = new FileVO(fi_name, fi_ori_name, bd_num);
+			boardDao.insertFile(file);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	//첨부파일 삭제
+	private void deleteFile(FileVO tmp) {
+		UploadFileUtils.deleteFile(uploadPath, tmp.getFi_name());
+		boardDao.deleteFile(tmp.getFi_num());
 	}
 }

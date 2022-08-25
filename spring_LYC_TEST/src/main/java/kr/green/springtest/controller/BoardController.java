@@ -58,7 +58,6 @@ public class BoardController {
 		LikesVO likes = boardService.getLikes(bd_num, user);
 		
 		//첨부파일
-		//
 		ArrayList<FileVO> fileList = boardService.getFileList(bd_num);
 		mv.addObject("fileList",fileList);
 		mv.addObject("likes",likes);
@@ -89,18 +88,23 @@ public class BoardController {
 		BoardVO board = boardService.getBoard(bd_num);
 		//가져온 게시글을 화면에 출력
 		mv.addObject("board", board);
+		//서비스에게 게시글 번호에 맞는 첨부파일들을 가져오라고 함
+		ArrayList<FileVO> fileList = boardService.getFileList(bd_num);
+		//화면에 출력
+		mv.addObject("fileList",fileList);
 		mv.setViewName("/board/update");
 		return mv;
 	}
 	@RequestMapping(value="/board/update/{bd_num}", method=RequestMethod.POST)
 	public ModelAndView boardUpdatePost(ModelAndView mv,
-			@PathVariable("bd_num")int bd_num, HttpSession session, BoardVO board) {
+			@PathVariable("bd_num")int bd_num, HttpSession session, BoardVO board,
+			MultipartFile []files, int []nums) {
 		//멤버vo에서 로그인한 회원정보를 가져옴
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		//게시글정보에 게시글 번호를 추가
 		board.setBd_num(bd_num);
 		//보드서비스에게 회원 정보와 게시글 정보를 주면서 수정하라고 시킴
-		boardService.updateBoard(board, user);
+		boardService.updateBoard(board, user, files, nums);
 		mv.setViewName("redirect:/board/select/"+bd_num);
 		return mv;
 	}

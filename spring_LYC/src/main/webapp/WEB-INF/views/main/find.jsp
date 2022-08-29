@@ -52,7 +52,6 @@
 <script type="text/javascript">
 $(function(){
 	let type = '${type}';
-	console.log(type)
 	$('a[href="#'+type+'"]').click();
 	
 	$('.btn-find-id').click(function(){

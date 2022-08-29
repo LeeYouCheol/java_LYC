@@ -10,4 +10,8 @@ public interface MemberService {
 
 	public Object idcheck(MemberVO member);
 
+	public String getId(MemberVO member);
+
+	public boolean findPw(MemberVO member);
+
 }

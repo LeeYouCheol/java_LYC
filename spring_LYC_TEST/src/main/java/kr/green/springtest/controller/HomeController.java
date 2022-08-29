@@ -80,5 +80,28 @@ public class HomeController {
 		map.put("check", memberService.idcheck(member));
 		return map;
 	}
-	
+	//아이디찾기 메소드
+	@RequestMapping(value= "/find", method=RequestMethod.GET)
+	public ModelAndView findGet(ModelAndView mv, String type) {
+		mv.addObject("type", type);
+		mv.setViewName("/main/find");
+		return mv;
+	}
+	@RequestMapping(value="/ajax/find/id")
+	@ResponseBody
+	public Map<Object,Object> findId(@RequestBody MemberVO member) {
+		HashMap<Object, Object> map = new HashMap<Object, Object>();
+		String id = memberService.getId(member);
+		map.put("id", id);
+		return map;
+	}
+	@RequestMapping(value="/ajax/find/pw")
+	@ResponseBody
+	public Map<Object,Object> findPw(@RequestBody MemberVO member) {
+		HashMap<Object, Object> map = new HashMap<Object, Object>();
+		boolean res = memberService.findPw(member);
+		System.out.println(member);
+		map.put("res", res);
+		return map;
+	}
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +18,8 @@
 			<input type="password" class="form-control" name="me_pw" placeholder="비밀번호를입력하세요">
 		</div>
 		<button class="btn btn-outline-success col-12 mb-3">로그인</button>
+		<a href="<c:url value="/find?type=id"></c:url>">아이디찾기</a>/
+		<a href="<c:url value="/find?type=pw"></c:url>">비밀번호찾기</a>
 	</form>
 </div>
 <script>

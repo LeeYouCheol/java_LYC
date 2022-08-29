@@ -14,4 +14,6 @@ public interface MemberService {
 
 	public boolean findPw(MemberVO member);
 
+	public boolean updateMember(MemberVO member, MemberVO user);
+
 }

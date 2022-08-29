@@ -104,4 +104,19 @@ public class HomeController {
 		map.put("res", res);
 		return map;
 	}
+	//회원정보 수정
+	@RequestMapping(value= "/member/update", method=RequestMethod.GET)
+	public ModelAndView memberUpdateGet(ModelAndView mv) {
+
+		mv.setViewName("/main/update");
+		return mv;
+	}
+	@RequestMapping(value= "/member/update", method=RequestMethod.POST)
+	public ModelAndView memberUpdatePost(ModelAndView mv, MemberVO member,
+			HttpSession session) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		boolean res = memberService.updateMember(member, user);
+		mv.setViewName("redirect:/member/update");
+		return mv;
+	}
 }

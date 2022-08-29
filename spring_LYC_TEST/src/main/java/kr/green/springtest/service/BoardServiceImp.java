@@ -52,6 +52,8 @@ public class BoardServiceImp implements BoardService{
 		
 		//게시글 작성자로 회원 아이디를 저장
 		board.setBd_me_id(user.getMe_id());
+		//다오에게 업데이트하라고 시킴
+		boardDao.updateOrderBoard(board);
 		//다오에게 게시글 작성하라고 시킴
 		boardDao.insertBoard(board);
 		

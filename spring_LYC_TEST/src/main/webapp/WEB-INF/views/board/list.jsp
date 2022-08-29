@@ -32,7 +32,8 @@
         	<td>${board.bd_num}</td>
         	<td>
         		<a href="<%=request.getContextPath()%>/board/select/${board.bd_num}">
-        		${board.bd_title}
+        			<c:forEach begin="2" end="${board.bd_depth}">-</c:forEach>
+        			${board.bd_title}
         		</a>
         	</td>
         	<td>${board.bd_me_id}</td>

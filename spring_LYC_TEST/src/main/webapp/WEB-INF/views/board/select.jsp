@@ -53,6 +53,9 @@
 				<a href="<%=request.getContextPath()%>/board/update/${board.bd_num}" class="btn btn-outline-primary mb-3">수정</a>
 				<a href="<%=request.getContextPath()%>/board/delete/${board.bd_num}" class="btn btn-outline-secondary mb-3">삭제</a>
 			</c:if>
+			<c:if test="${user.me_id != board.bd_me_id}">
+				<a href="<%=request.getContextPath()%>/board/insert?bd_ori_num=${board.bd_ori_num}&bd_depth=${board.bd_depth}&bd_order=${board.bd_order}" class="btn btn-outline-info">답글</a>
+			</c:if>
 			<div class="form-group">
   				<label for="">첨부파일:</label>
   				<c:forEach items="${fileList}" var="fi">

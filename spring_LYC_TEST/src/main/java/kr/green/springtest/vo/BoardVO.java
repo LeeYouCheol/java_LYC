@@ -19,6 +19,7 @@ public class BoardVO {
 	private int bd_depth;
 	private int bd_views;
 	private String bd_del = "N";
+	private int bd_order;//같은 ori_num을 가진 게시글들의 순서
 	
 	public String getBd_reg_date_str() {
 		SimpleDateFormat format = new SimpleDateFormat("yyy-MM-dd");

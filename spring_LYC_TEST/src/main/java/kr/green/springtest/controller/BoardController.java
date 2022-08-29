@@ -32,7 +32,7 @@ public class BoardController {
 	//게시판 불러오기
 	@RequestMapping(value="/board/list", method=RequestMethod.GET)
 	public ModelAndView boardListGet(ModelAndView mv, Criteria cri) {
-		cri.setPerPageNum(2);
+		cri.setPerPageNum(5);
 		//보드서비스에게 게시글 리스트를 요청
 		ArrayList<BoardVO> list = boardService.getBoardList(cri);
 		int totalCount = boardService.getTotalCount(cri);

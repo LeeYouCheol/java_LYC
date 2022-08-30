@@ -31,23 +31,42 @@
 			<button class="btn btn-outline-primary col-12 mb-3">게시글 수정</button>
 		</form>
 	</div>
-	<script>
-	$(function(){
-		//첨부파일에서 x버튼 클릭
-		$('.btn-del').click(function(){
-			let str = '<input type="file" class="form-control" name="files">';
-			$(this).parent().after(str);
-			let fi_num = $(this).data('target');
-			str = '<input type="hidden" name="delFiles" value="'+fi_num+'">';
-			$(this).parent().after(str);
-			$(this).parent().remove();
-		})
+<script>
+$(function(){
+	//첨부파일에서 x버튼 클릭
+	$('.btn-del').click(function(){
+		let str = '<input type="file" class="form-control" name="files">';
+		$(this).parent().after(str);
+		let fi_num = $(this).data('target');
+		str = '<input type="hidden" name="delFiles" value="'+fi_num+'">';
+		$(this).parent().after(str);
+		$(this).parent().remove();
 	})
-	$('#sn').summernote({
-		placeholder: '내용을입력하세요',
-		tabsize: 2,
-		height: 400
-	});
-	</script>
+})
+$('#sn').summernote({
+	placeholder: 'Hello Bootstrap 4',
+	tabsize: 2,
+	height: 400,
+	callbacks: {
+	onImageUpload: function(files) {
+		let data = new FormData();
+		data.append('file', files[0]);
+		let thisObj = $(this)
+		$.ajax({
+			data : data,
+			type : 'post',
+			url : '<%=request.getContextPath()%>/board/img/upload',
+			contentType : false,
+			processData : false,
+			dataType : "json",
+			success : function(data){
+				let url = '<%=request.getContextPath()%>/simg' + data.url;
+				thisObj.summernote('insertImage', url);
+				}
+			})
+		}
+	}
+});
+</script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package kr.green.spring.serveice;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ public class BoardServiceImp implements BoardService{
 	@Autowired
 	BoardDAO boardDao;
 	private String uploadPath = "C:\\Users\\LYC\\OneDrive\\바탕 화면\\숙제\\java_LYC\\uploadfiles";
+	private String imgUploadPath = "C:\\Users\\LYC\\OneDrive\\바탕 화면\\숙제\\java_LYC\\img";
+	
 	@Override
 	public void isertBoard(BoardVO board, MemberVO user, MultipartFile[] files) {
 		if(board == null || board.getBd_title() == null || board.getBd_content() == null)
@@ -284,6 +287,18 @@ public class BoardServiceImp implements BoardService{
 				e.printStackTrace();
 			}
 	}
+	}
+
+	@Override
+	public String uploadImage(MultipartFile file) {
+		if(file == null || file.getOriginalFilename().length() == 0)
+			return null;
+		try {
+			return UploadFileUtils.uploadFile(imgUploadPath, file.getOriginalFilename(), file.getBytes());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }
 

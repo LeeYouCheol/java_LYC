@@ -28,7 +28,9 @@
 				<button type="button" class="btn btn<c:if test="${likes.li_state != -1}">-outline</c:if>-danger down btn-like">비추천</button>
 			</div>
 			<div class="form-group">
-  				<textarea class="form-control" rows="20" name="bd_content" readonly>${board.bd_content }</textarea>
+				<div class="form-control" style="height:auto; min-height:400px;">
+  					${board.bd_content }
+  				</div>
 			</div>
 			<div class="form-group">
   				<label>첨부파일</label>

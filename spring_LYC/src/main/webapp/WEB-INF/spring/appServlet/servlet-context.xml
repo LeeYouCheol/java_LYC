@@ -17,6 +17,7 @@
 	<resources mapping="/resources/**" location="/resources/" />
 	<!-- file:/// => 프로젝트 외부 폴더에서 파일을 가져올경우 -->
 	<resources mapping="/file/**" location="file:///C:/Users/LYC/OneDrive/바탕 화면/숙제/java_LYC//uploadfiles/" />
+	<resources mapping="/simg/**" location="file:///C:/Users/LYC/OneDrive/바탕 화면/숙제/java_LYC//img/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

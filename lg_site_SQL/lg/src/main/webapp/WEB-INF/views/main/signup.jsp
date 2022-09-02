@@ -19,6 +19,7 @@
 		<div class="form-group">
 			<label for="me_email">이메일:</label>
   			<input type="text" class="form-control" id="me_email" name="me_email" placeholder="아이디로 사용할 이메일을 입력하세요">
+			<div id="me_email-error" class="error" for="me_email"></div>
 		</div>
 		<div class="form-group">
 			<label for="me_pw">비밀번호:</label>
@@ -94,7 +95,8 @@ $(function(){
         	},
         	submitHandler: function(form){
         		if(!idCheck){
-    				alert('이메일이 중복된 이메일입니다. 다른 이메일을 사용하세요.');
+    				$('#me_email-error').text('이미 사용중인 이메일입니다.').show();
+    				$('#me_email').focus();
     				return false;
     			}
         		return true;
@@ -110,37 +112,36 @@ $(function(){
     	"Please check your input."
 	);
 $(function(){
-	$('#idCheck').click(function(){
-		let id = $('[name=me_id]').val()
-		
-		if(id.trim().length == 0){
-			alert('아이디를 입력하세요.')
-			return;
-		}
-		
-		let obj = {
-			me_id : id
-		}
-		console.log(id);
-		$.ajax({
-		     async:false,
-		     type:'POST',
-		     data:JSON.stringify(obj),
-		     url: '<%=request.getContextPath()%>/id/check',
-		     dataType:"json",
-		     contentType:"application/json; charset=UTF-8",
-		     success : function(data){
-		    	 if(data){
-		    		 alert('가입 가능한 아이디입니다.');
-		    		 idCheck = true;
-		    	 }else{
-		    		 alert('이미 사용중이거나 탈퇴한 아이디입니다.');
-		    	 }
-		     }
-		});
-	})
+		$('[name=me_email]').on('input', function(){
+			idCheck = false;
+			let me_email = $(this).val();
+			console.log(me_email)
+			if(me_email.length == 0)
+				return false;
+			
+			let obj = {
+					me_email : me_email
+			}
+			ajaxPost(false, obj, '/check/email', function(data){
+				idCheck = data.res;
+			})
+		})
 })
-let idCheck = true;
+let idCheck = false;
+function ajaxPost(async, dataObj, url, success){
+	$.ajax({
+    	async:async,
+    	type:'POST',
+    	data:JSON.stringify(dataObj),
+    	url: "<%=request.getContextPath()%>"+url,
+    	dataType:"json",
+    	contentType:"application/json; charset=UTF-8",
+    	success : function(data){
+    		//얘가 있어야 등록됨
+   	 		success(data)
+    	}
+	});
+}
 <!-- 우편번호 함수 -->
 function execDaumPostcode() {
 	new daum.Postcode({

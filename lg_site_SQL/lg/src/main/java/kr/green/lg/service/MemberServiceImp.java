@@ -98,7 +98,7 @@ public class MemberServiceImp implements MemberService{
 		
 		if(user.getMe_pos_count() > 5)
 			return false;
-		System.out.println(user);
+		
 		if(user.getMe_pos() == 1)
 			return true;
 		
@@ -108,6 +108,21 @@ public class MemberServiceImp implements MemberService{
 		}
 		memberDao.updatePosCount(user.getMe_email());
 		return false;
+	}
+	@Override
+	public MemberVO login(MemberVO member) {
+		if(member == null || member.getMe_email() == null || member.getMe_pw() == null)
+			return null;
+		MemberVO user = memberDao.selectMember(member.getMe_email());
+		if(user == null)
+			return null;
+		
+		if(user.getMe_pos() != 1)
+			return null;
+		
+		if(passwordEncoder.matches(member.getMe_pw(), user.getMe_pw()))
+			return user;
+		return null;
 	}
 
 

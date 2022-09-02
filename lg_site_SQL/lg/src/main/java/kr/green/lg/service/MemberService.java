@@ -12,4 +12,6 @@ public interface MemberService {
 
 	boolean emailActive(MemberVO member);
 
+	MemberVO login(MemberVO member);
+
 }

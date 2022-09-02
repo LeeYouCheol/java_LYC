@@ -14,4 +14,8 @@ public interface MemberService {
 
 	MemberVO login(MemberVO member);
 
+	void updateMemberSession(MemberVO user);
+
+	MemberVO loginBySession(String me_s_id);
+
 }

@@ -28,7 +28,7 @@
 		      	<li class="nav-item dropdown member">
 				    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa-regular fa-user"></i></a>
 				    <div class="dropdown-menu">
-				    	<c:if test="${user ==null }">
+				    	<c:if test="${user == null }">
 							<a class="dropdown-item" href="<c:url value="/signup"></c:url>">회원가입</a>
 							<a class="dropdown-item" href="<c:url value="/login"></c:url>">로그인</a>
 						</c:if>

@@ -8,6 +8,8 @@ public interface MemberService {
 
 	boolean isUser(MemberVO member);
 
+	boolean sendEmail(String title, String content, String writter);
 
+	boolean emailActive(MemberVO member);
 
 }

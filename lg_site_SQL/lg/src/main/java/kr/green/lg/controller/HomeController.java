@@ -49,6 +49,13 @@ public class HomeController {
 		mv.setViewName("/main/signupSuccess");
 		return mv;
 	}
+	@RequestMapping(value = "/signup/check", method = RequestMethod.GET)
+	public ModelAndView signupCheckGet(ModelAndView mv, MemberVO member) {
+		boolean res = memberService.emailActive(member);
+		mv.addObject("title", "회원가입완료");
+		mv.setViewName("/main/signupCheck");
+		return mv;
+	}
 	
 	//ajax
 	@RequestMapping(value = "/check/email", method = RequestMethod.POST)

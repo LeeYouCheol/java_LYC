@@ -1,18 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link" href="<c:url value="/admin/category"></c:url>">ī�װ���</a>
+      <a class="nav-link" href="<c:url value="/admin/category"></c:url>">카테고리 등록</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Link 2</a>
+      <a class="nav-link" href="<c:url value="/admin/product/list"></c:url>">제품 등록</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">Link 3</a>

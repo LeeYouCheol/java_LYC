@@ -154,6 +154,7 @@ public class MemberServiceImp implements MemberService{
 			return;
 		session.removeAttribute("user");
 		
+		//여기부터가 자동로그인 해제를 통한 로그아웃
 		Cookie cookie = WebUtils.getCookie(request, "lgCookie");
 		if(cookie == null || response == null)
 			return;

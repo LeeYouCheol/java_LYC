@@ -11,7 +11,7 @@ import kr.green.lg.vo.ProductVO;
 
 @Controller
 public class ProductController {
-
+	
 	@Autowired
 	ProductService productService;
 	

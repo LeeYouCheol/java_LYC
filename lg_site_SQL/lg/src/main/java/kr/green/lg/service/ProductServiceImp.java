@@ -77,7 +77,7 @@ public class ProductServiceImp implements ProductService {
 	public int getProductTotalCount(Criteria cri) {
 		if(cri == null)
 			cri = new Criteria();
-		return productDao.selectProductTotalCount();
+		return productDao.selectProductTotalCount(cri);
 	}
 
 	@Override
@@ -85,5 +85,16 @@ public class ProductServiceImp implements ProductService {
 		if(pr_code == null || pr_code.length() != 6)
 			return null;
 		return productDao.selectProduct(pr_code);
+	}
+
+	@Override
+	public boolean deleteProduct(String pr_code) {
+		if(pr_code == null || pr_code.length() != 6)
+			return false;
+		ProductVO product = productDao.selectProduct(pr_code);
+		if(product == null)
+			return false;
+		UploadFileUtils.deleteFile(productThumbnailUploadPath, product.getPr_thumb());
+		return productDao.deleteProduct(pr_code) == 1 ? true : false;
 	}
 }

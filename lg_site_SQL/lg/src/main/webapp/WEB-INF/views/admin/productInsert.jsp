@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -56,7 +57,7 @@
 	<div class="form-group">
 	  <textarea class="form-control" name="pr_spec" placeholder="제품 스펙"></textarea>
 	</div>
-	<button class="btn btn-outline-primary col-12">제품 등록</button>
+	<button class="btn btn-outline-danger col-12">제품 등록</button>
 </form>
 <script type="text/javascript">
 $(function(){

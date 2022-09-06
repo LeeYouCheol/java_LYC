@@ -9,10 +9,10 @@
 <body>
 <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link" href="<c:url value="/admin/category"></c:url>">카테고리 등록</a>
+      <a class="nav-link" href="<c:url value="/admin/category"></c:url>">카테고리</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="<c:url value="/admin/product/list"></c:url>">제품 등록</a>
+      <a class="nav-link" href="<c:url value="/admin/product/list"></c:url>">제품</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">Link 3</a>

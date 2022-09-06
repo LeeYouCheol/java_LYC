@@ -22,4 +22,6 @@ public interface ProductDAO {
 
 	int selectProductTotalCount();
 
+	ProductVO selectProduct(String pr_code);
+
 }

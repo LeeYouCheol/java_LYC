@@ -17,7 +17,6 @@ public class BoardServiceImp implements BoardService{
 
 	@Override
 	public boolean insertBoard(BoardVO board, MemberVO user, String bd_type) {
-		System.out.println(board);
 		if(board == null ||
 				board.getBd_title() == null ||
 				board.getBd_title().length() == 0 ||
@@ -69,5 +68,32 @@ public class BoardServiceImp implements BoardService{
 		else if(bd_type.equals("QNA"))
 			return "";
 		return null;
+	}
+
+	@Override
+	public BoardVO getBoard(Integer bd_num) {
+		if(bd_num == null)
+			return null;
+		return boardDao.selectBoard(bd_num);
+	}
+
+	@Override
+	public boolean updateBoard(BoardVO board, MemberVO user) {
+		if(board == null ||
+				board.getBd_title() == null ||
+				board.getBd_title().length() == 0 ||
+				board.getBd_content() == null)
+			return false;
+		BoardVO dbBoard = boardDao.selectBoard(board.getBd_num());
+		if(dbBoard == null)
+			return false;
+
+		if(user.getMe_authority() != 10 && !board.getBd_me_email().equals(user.getMe_email()))
+			return false;
+		
+		dbBoard.setBd_title(board.getBd_title());
+		dbBoard.setBd_title(board.getBd_content());
+		dbBoard.setBd_secret(board.getBd_secret());
+		return boardDao.updateBoard(dbBoard) == 1 ? true : false;
 	}
 }

@@ -92,7 +92,7 @@ public class BoardServiceImp implements BoardService{
 			return false;
 		
 		dbBoard.setBd_title(board.getBd_title());
-		dbBoard.setBd_title(board.getBd_content());
+		dbBoard.setBd_content(board.getBd_content());
 		dbBoard.setBd_secret(board.getBd_secret());
 		return boardDao.updateBoard(dbBoard) == 1 ? true : false;
 	}

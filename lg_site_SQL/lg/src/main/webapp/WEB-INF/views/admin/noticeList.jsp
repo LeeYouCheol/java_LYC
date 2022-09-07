@@ -41,9 +41,10 @@ form.btn{
 	        <td>${bo.bd_reg_date_str}</td>
 	        <td>
 	        	<a class="btn btn-outline-danger" href="<c:url value="/admin/board/update?bd_num=${bo.bd_num}"></c:url>">수정</a>
-	        	<form class="btn btn-outline-warning" action="<c:url value="board/delete"></c:url>" method="post">
+	        	<form class="btn btn-outline-warning" action="<c:url value="/board/delete"></c:url>" method="post">
 	        		<button class="btn-del">삭제</button>
 	        		<input type="hidden" name="bd_num" value="${bo.bd_num}">
+	        		<input type="hidden" name="bd_type" value="${bo.bd_type }">
 	        	</form>
 	        </td>
 	      </tr>

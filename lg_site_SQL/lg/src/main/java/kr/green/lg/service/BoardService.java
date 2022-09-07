@@ -14,4 +14,8 @@ public interface BoardService {
 
 	int getTotalCount(Criteria cri, String bd_type);
 
+	boolean deleteBoard(Integer bd_num, MemberVO user);
+
+	String getDeleteRedirectUrl(String bd_type);
+
 }

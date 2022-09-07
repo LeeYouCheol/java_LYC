@@ -21,7 +21,7 @@ public class ProductServiceImp implements ProductService {
 	@Autowired
 	ProductDAO productDao;
 	
-	String productThumbnailUploadPath = "C:\\Users\\LYC\\Documents\\GitHub\\java_LYC\\product";
+	String productThumbnailUploadPath = "C:\\Users\\LYC\\Documents\\GitHub\\product";
 	
 	@Override
 	public int insertCategory(CategoryVO category) {

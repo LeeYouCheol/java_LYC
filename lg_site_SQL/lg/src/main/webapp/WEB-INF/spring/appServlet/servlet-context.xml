@@ -49,7 +49,7 @@
 	</interceptors>
 	<interceptors>
 	    <interceptor>
-	        <mapping path="/*"/>
+	        <mapping path="/**"/>
 	        <beans:ref bean="autoLoginInterceptor"/>
 	    </interceptor>
 	</interceptors>

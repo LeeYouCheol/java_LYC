@@ -58,8 +58,8 @@ $(function(){
 		}
 	});
 	$(document).on('click', '.btn-close', function(){
-		let fi_bd_num = $(this).data('target');
-		$(this).parernt().remove();
+		let fi_num = $(this).data('target');
+		$(this).parent().remove();
 		let str = '';
 		str += '<input type="file" class="form-control" name="files">';
 		str += '<input type="hidden" name="nums" value="'+fi_num+'">';

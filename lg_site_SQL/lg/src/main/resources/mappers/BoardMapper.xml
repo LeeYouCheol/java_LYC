@@ -50,9 +50,9 @@
 		select * from file where fi_bd_num = #{bd_num}
 	</select>
 	<select id="selectFile" resultType="kr.green.lg.vo.FileVO">
-		select * from file where fi_num #{fi_num}
+		select * from file where fi_num = #{fi_num}
 	</select>
 	<delete id="deleteFile">
-		delete from file where fi_num #{fi_num}
+		delete from file where fi_num = #{fi_num}
 	</delete>
 </mapper>

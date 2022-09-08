@@ -17,6 +17,7 @@
 </style>
 </head>    
 <body>
+${user }
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
 	<div class="container" style="position: relative;">
   	<a class="navbar-brand home" href="<c:url value="/"></c:url>"></a>

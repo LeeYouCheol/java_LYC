@@ -28,6 +28,12 @@ form.btn{
 	<div class="form-group">
 		<div class="form-control" style="height: auto; mein-height: 300px;">${bo.bd_content}</div>
 	</div>
+	<div class="form-group">
+		<label>첨부파일</label>
+		<c:forEach items="${fileList}" var="file">
+			<a class="form-group" href="<c:url value="/file/${file.fi_name}"></c:url>" download="${file.fi_ori_name}">${file.fi_ori_name}</a>
+		</c:forEach>
+	</div>
 	<c:if test="${user.me_email == bo.bd_me_email && bo.bd_type != 'NOTICE'}">
 		<a href="<c:url value="/board/update?bd_num=${bo.bd_num}"></c:url>" class="btn btn-outline-primary mb-3">수정</a>
 		<form class="btn btn-outline-danger" action="<c:url value="/board/delete"></c:url>" method="post">

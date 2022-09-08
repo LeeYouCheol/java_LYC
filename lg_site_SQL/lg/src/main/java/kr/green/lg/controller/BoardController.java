@@ -21,7 +21,7 @@ import kr.green.lg.pagination.PageMaker;
 import kr.green.lg.service.BoardService;
 import kr.green.lg.service.MessageService;
 import kr.green.lg.vo.BoardVO;
-import kr.green.lg.vo.CategoryVO;
+import kr.green.lg.vo.FileVO;
 import kr.green.lg.vo.MemberVO;
 
 @Controller
@@ -48,6 +48,8 @@ public class BoardController {
 	@RequestMapping(value = "/board/select", method = RequestMethod.GET)
 	public ModelAndView boardSelectGet(ModelAndView mv, Integer bd_num) {
 		BoardVO board = boardService.getBoard(bd_num);
+		ArrayList<FileVO> fileList = boardService.getFileList(bd_num);
+		mv.addObject("fileList", fileList);
 		mv.addObject("bo", board);
 		mv.setViewName("/board/select");
 		return mv;
@@ -79,6 +81,32 @@ public class BoardController {
 			messageService.message(response, "게시글을 등록했습니다.", "/lg/product/select?pr_code="+board.getBd_pr_code());
 		else
 			messageService.message(response, "게시글 등록에 실패했습니다.", "/lg/product/select?pr_code="+board.getBd_pr_code());
+		return mv;
+	}
+	@RequestMapping(value = "/board/update", method = RequestMethod.GET)
+	public ModelAndView boardUpdateGet(ModelAndView mv, Integer bd_num,
+			HttpSession session, HttpServletResponse response) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		BoardVO board = boardService.getBoard(bd_num);
+		ArrayList<FileVO> fileList = boardService.getFileList(bd_num);
+		mv.addObject("fileList", fileList);
+		mv.addObject("bo", board);
+		if(boardService.isWriter(board,user)) {
+		mv.setViewName("/board/update");
+		}else {
+			messageService.message(response, "", "/lg/board/select?bd_num="+bd_num);
+		}
+		return mv;
+	}
+	@RequestMapping(value = "/board/update", method = RequestMethod.POST)
+	public ModelAndView boardUpdatePost(ModelAndView mv, BoardVO board, HttpSession session,
+			MultipartFile []files, HttpServletResponse response, int[]nums) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		boolean res = boardService.updateBoard(board, user, files, nums);
+		if(res)
+			messageService.message(response, "게시글을 수정했습니다.", "/lg/product/select?pr_code="+board.getBd_pr_code());
+		else
+			messageService.message(response, "게시글 수정에 실패했습니다.", "/lg/product/select?pr_code="+board.getBd_pr_code());
 		return mv;
 	}
 	//ajax
